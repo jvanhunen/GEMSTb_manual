@@ -1,7 +1,7 @@
 # Installation
 
 ## Requirements
-- Python 3.10+
+- Requirements go here
 
 ## Install
 
