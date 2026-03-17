@@ -1,0 +1,10 @@
+site_name: GEMSTb manual
+
+theme:
+  name: material  # if installed
+
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Quickstart: quickstart.md
+  - Workflows: workflows.md 
