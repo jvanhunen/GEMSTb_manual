@@ -1,0 +1,185 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cite}
+%
+% with breaklinks=true, links which spanned multiple lines no longer worked...
+\usepackage[colorlinks=true,%
+            linkcolor=blue,%
+            urlcolor=blue,%
+            citecolor=blue]{hyperref}
+%% modified from http://www.kronto.org/thesis/tips/url-formatting.html
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\sffamily}}}
+\makeatother
+%% Now actually use the newly defined style.
+\urlstyle{leo}
+%
+%% narrower margins, need to be 2cm all round:
+\usepackage[margin=2cm]{geometry}  %EPSRC mandated margins
+% next two need to add up to 37pt for this to work right, I think:
+\setlength{\headheight}{27pt}
+\setlength{\headsep}{10pt}
+% can't set footskip=0
+\setlength{\footskip}{5pt}
+%addtolength{\textheight}{5pt}
+
+%% rearrange paragraph indentation and spacing %%
+%\setlength{\parindent}{0em}
+%\setlength{\parskip}{1.0ex plus 0.5ex minus 0.5ex}
+\setlength{\parskip}{0.5ex plus 0.5ex minus 0.5ex}
+%\setlength{\parskip}{0ex plus 0.5ex minus 0.1ex}
+\parindent 1em % redefine to 1em where paragraph indents are needed
+%%% leave off for drafting, then invoke this to help shrink to length!!
+%\renewcommand{\baselinestretch}{0.9}  %line spacing squeezed a bit
+%%%
+%%% table parameters: more space in boxes needed if using lines %%%
+%\renewcommand{\arraystretch}{1.3}
+%
+% for word-wrapped verbatim, use a code listing package:
+\usepackage{listings}
+\lstset{breaklines=true} 
+%%% section headings: smaller font size, less whitespace %%%
+\usepackage[small,compact]{titlesec} 
+\titleformat{\paragraph}[runin]{\normalsize}{}{0pt}{\bfseries}[ ~]
+\titlespacing\paragraph{0pt}{0pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titleformat{\section}
+{\vspace{0.5ex}%
+\titlerule
+\vspace{.5ex}%
+\large
+}
+{\thesection.}{0.5ex}{\bfseries\raggedright}
+\titlespacing\section{0pt}{0pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+%
+%%% change to san serif font %%%
+\renewcommand{\sfdefault}{cmss} 
+% computer modern sans serif = cmss / phv = helvetica
+\renewcommand{\familydefault}{\sfdefault} 
+% EPSRC mandated sans serif whole doc (ugh!)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[table,dvipsnames]{xcolor} %% can shade in tables
+%%% define colours used:
+\definecolor{palatine}{rgb}{0.41, 0.16, 0.38} % Durham purple
+%
+\definecolor{darkgreen}{rgb}{0.05,0.5,0.35} % for WP1
+\definecolor{shadegreen}{rgb}{0.75,0.99,0.85}
+\definecolor{palegreen}{rgb}{0.85,0.99,0.9} % for workplan timeline
+%
+\definecolor{darkred}{rgb}{0.5,0.05,0.1} % for WP2
+\definecolor{shadered}{rgb}{0.99,0.75,0.85} % for workplan timeline
+\definecolor{palered}{rgb}{0.99,0.8,0.9} % for workplan timeline
+%
+\definecolor{blueviolet}{rgb}{0.05,0.1,0.5} % 
+\definecolor{darkblue}{rgb}{0.11,0.11,0.49}
+\definecolor{shadeblue}{rgb}{0.8,0.85,0.99}
+\definecolor{paleblue}{rgb}{0.85,0.9,0.99} 
+%
+\definecolor{gray10}{rgb}{0.9,0.9,0.9} % for workplan
+\definecolor{gray30}{rgb}{0.7,0.7,0.7} % for workplan
+\definecolor{gray50}{rgb}{0.5,0.5,0.5} % for workplan
+\definecolor{gray70}{rgb}{0.3,0.3,0.3} % for workplan
+%
+%% tikz needed for workplan, if not for figures:
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,tikzmark}
+\tikzstyle{every loop}=[]
+\usepackage{graphicx} %% to include figures
+\usepackage{xspace}
+%
+%%% all the publications listing stuff is in here:
+%\usepackage{xr} % for crossrefs if used in bib
+%\usepackage[square,numbers,sort&compress]{natbib}
+%\bibliographystyle{unsrtnat}
+\usepackage{multibib}
+%\def\bibsection{\subsection*{\refname}} 
+\newcites{pub}{\null\\[-1.3em]}%  \citepub, \nocitepub, ...
+\bibliographystylepub{abbrev_unsrt}
+\bibliographystyle{abbrev_unsrt}
+%\usepackage{doi} % show doi as links
+%
+\usepackage{paralist} % compact lists
+%\usepackage[nodayofweek]{datetime}
+%
+\newcommand{\inlinebullet}{{\footnotesize\textbullet\ }}
+%%%for comments while drafting:
+\newcommand{\redit}[1]{\textcolor[named]{Maroon}{\textit{$\bigstar$ #1}}}
+\newcommand{\VK}[1]{\textcolor{darkgreen}{VK: #1}}
+%%% set up your own, edit to suit:
+%\newcommand{\AB}[1]{\textcolor{darkblue}{AB: #1}}
+%\newcommand{\HK}[1]{\textcolor{palatine}{HK: #1}}
+\newcommand{\NC}[1]{\textcolor{Sepia}{NC: #1}}
+\newcommand{\RA}[1]{\textcolor{blue}{RA: #1}}
+%%% used for response to referees:
+%
+
+\newcommand{\hpc}{High Performance Computing (HPC)\renewcommand{\hpc}{HPC\xspace}\xspace}
+\newcommand{\pue}{Power Utilisation Efficiency (PUE)\renewcommand{\pue}{PUE\xspace}\xspace}
+\newcommand{\repq}[1]{\textcolor{darkblue}{\textit{#1}}} % repq = referee report quote
+\newcommand{\callq}[1]{\textcolor{darkgreen}{#1}}         % callq = Call quote
+\newcommand{\redq}[1]{\textcolor{Maroon}{#1}}  % redq = dark red text quote
+
+%%% set up project name and abbreviation here:
+\newcommand{\projname}{\textcolor{darkblue}{ICHS}}
+\newcommand{\projtitle}{\textbf{\textcolor{darkblue}{\large $\bigstar$ Immersion Cooling and Heat Storage technologies for HPC -- ICHS  $\bigstar$}}}
+%%% color-code the work packages throughout:
+\newcommand{\WPI}{\textcolor{darkgreen}{WP1}}
+\newcommand{\WPII}{\textcolor{darkred}{WP2}}
+\newcommand{\WPIII}{\textcolor{darkblue}{WP3}}
+%\newcommand{\WPIIIN}{\textcolor{darkblue}{WP3--N}}
+\newcommand{\WPIV}{\textcolor{Maroon}{WP4}}
+%%% WP5 is black/grey, don't need command
+% Above used in Gantt chart, remove when updated...
+%
+%%% This gives a fairly robust textwidth shaded box:
+\newsavebox{\minibox}
+\newlength{\minilength}
+\newenvironment{framedminipage}[1][\linewidth]{%
+  \setlength{\minilength}{#1}
+  \addtolength{\minilength}{-2\fboxsep}
+  \addtolength{\minilength}{-2\fboxrule}
+  \begin{lrbox}{\minibox}\begin{minipage}{\minilength}\raggedright}%
+  {\end{minipage}\end{lrbox}\fcolorbox{gray50}{paleblue}{\usebox{\minibox}}}
+%
+%%% for maths and symbols: %%%
+\RequirePackage{amsmath}
+\RequirePackage{mathtools} % fixes broken stuff in amsmath
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+%
+\usepackage{pgfgantt} % to draw Gantt chart
+%
+% reduce space wasted by allowing text and big figures in a column
+\renewcommand\floatpagefraction{.9}
+\renewcommand\dblfloatpagefraction{.9} % for two column documents
+\renewcommand\topfraction{.9}
+\renewcommand\dbltopfraction{.9} % for two column documents
+\renewcommand\bottomfraction{.9}
+\renewcommand\textfraction{.1}   
+\setcounter{totalnumber}{50}
+\setcounter{topnumber}{50}
+\setcounter{bottomnumber}{50}
+
+%*********** CHANGE THIS TO SUIT **************************%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhf[LH]{{\tiny \today}}
+%\fancyhf[CH]{\textcolor{darkblue}{HACQS}} %{}
+\fancyhf[RH]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+%
+%%% shortcuts: (needed if include tikz ART diagrams)
+\def\M{{\cal M}}
+\def\C{{\cal C}}
+\newcommand{\ket}[1]{\ensuremath{\left|#1\right\rangle}}
+\newcommand{\bra}[1]{\ensuremath{\left\langle #1\right|}}
+\newcommand{\p}{\mathbf{p}}
+\newcommand{\s}{\mathbf{s}}
+\newcommand{\RT}{\mathcal{R_T}}
+\newcommand{\IRT}{\mathcal{\widetilde{R}_T}}
+\newcommand{\theory}{\mathcal{T}}
+\newcommand{\see}{C}
+%
