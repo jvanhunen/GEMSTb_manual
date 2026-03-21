@@ -1,0 +1,668 @@
+---
+date: 10th June 2025
+title: GEMS Toolbox manual
+---
+
+# Summary
+
+This document describes the procedure for setting up a model for mine water heating using the GEMS Toolbox. The procedure makes use of the software tools ArcGIS Pro (commercial software tool), python, gmsh, and Paraview (free software tools).
+
+# Contact points
+
+|                        |                                     |
+|:-----------------------|:------------------------------------|
+| Jeroen van-Hunen:      | jeroen.van-hunen@durham.ac.uk       |
+| Julien Mouli-Castillo: | julien.mouli-castillo@glasgow.ac.uk |
+| Steve Shi:             | difu.shi@durham.ac.uk               |
+
+# Required software tools
+
+## ArcGIS Pro or QGIS
+
+Mine plan digitisation is done using GIS software. At the moment, tools are available for ArcGIS Pro or QGIS.
+
+### ArcGIS Pro
+
+For staff/students of Durham University, ArcGIS Pro is available through <https://appsanywhere.durham.ac.uk/login>, either in one of the computer rooms on the university campus, or on your own computer. Type your CIS username and password, and log in. An ’Open Appsanywhere’ pop-up window might appear, which you should agree to. If you are running Appsanywhere for the first time, you may be guided to install it first on your machine. In the search box, search for the latest version of `ArcGIS Pro` (version 3.0 at the time of writing), and click on `Launch Remote`. A ’Parallels Client’ remote window will open, which contains ArcGIS Pro.
+
+ArcGIS Pro can also be directly downloaded, and, after creating an account as explained [here](https://durhamuni.maps.arcgis.com/home/index.html), can be run on your own computer, but only if your computer runs a MS Windows operating system.
+
+### QGIS
+
+To install the latest stable version, the user is referred to [the QGIS website](https://docs.qgis.org/3.34/en/docs/user_manual), Section 5.1.
+
+## Python
+
+This code requires Python 3, with Python 3.12 or 3.13 being recommended.
+
+You can set up your environment using either Python’s built-in venv module or Conda. For Python installation, visit the official Python website at <https://python.org/downloads>.
+
+If you prefer Conda, you can download and install it from <https://docs.conda.io/projects/conda/en/latest/user-guide/install/>. The required package list is located in the directory `config/GEMS.base.yml`. Instructions for package installation will be provided in a later section.
+
+To check if the installation was done correctly, do the following:
+
+- Open a terminal
+
+- Type:  
+  `which python` (MacOS or Linux)  
+  `where python` (Windows)
+
+This should provide you with a full path for the Python executable.
+
+## Paraview
+
+The visualisation software tool Paraview can be downloaded from <https://www.paraview.org/download/>. The Mac OS versions are all fairly stable, but the MS Windows versions not so much. If the latest version is not working properly, try installing an earlier version.
+
+# Installing and running the GEMSToolbox software
+
+The GEMSToolbox is designed to import a custom digitised map and test the feasibility of this mine system for mine water geothermal energy purposes. This is all described further down in this manual. This section describes how to install the GEMSToolbox software and test that it runs normally on your computer.
+
+## Installation of GEMSToolbox
+
+1.  Downloading GEMSToolbox You should have received a `.zip` file of the code. Please contact jeroen.van-hunen@durham.ac.uk if this is not the case. Unzip the GEMSToolbox zip file into a suitable folder on your computer. We’ll call this folder `<homeGEMSTb>` from now on.
+
+2.  Install GEMSToolbox Python environment
+
+    - By conda:
+
+      - Navigate to the GEMS directory. Then run:
+
+        - `conda env create -f config/GEMS.base.yml`
+
+      - Activate GEMS enviroment:
+
+        - `conda activate GEMS`
+
+    - By python venv:
+
+      - In terminal or Windows CMD, to create GEMS venv, run:
+
+        - `python -m venv GEMS `
+
+      - Activate GEMS venv:
+
+        - On Windows: `GEMS`$\backslash$`Scripts`$\backslash$`activate`
+
+        - On MacOS and Linux: `source GEMS/bin/activate`
+
+      - Install required packages:
+
+        - Check if `pip` is installed on your machine:  
+          `pip –version` should return info on pip. If not, install it using  
+          `python get-pip.py`
+
+        - `pip install –upgrade pip`
+
+        - `pip install pytest pandas geopandas meshio scipy openpyxl tqdm numba pyyaml gmsh `
+
+## Running a test model
+
+To check if the code is installed and running properly, you can run one of the pre-installed models:
+
+1.  Navigate to `<homeGEMSTb>`, which is the root directory of GEMSToolbox codebase.
+
+2.  On the command line, run the following line: `python GEMSTb.py <model>.xlsx`  
+    where `<model>.xlsx` is one of the model xlsx input files located in the `<homeGEMSTb>/data` folder. For example, if the input file is `testmineplan.xlsx`, located in the `data` folder, then run the following command:  
+    `python GEMSTb.py data/testmineplan.xlsx` (MacOS or Linux) or  
+    `python GEMSTb.py data\testmineplan.xlsx` (Windows)
+
+3.  If the code is correctly installed, this model should run in less than a minute, ending with the message: `GEMSToolbox completed successfully in X minutes.`
+
+4.  To view the results of this calculation, please refer to Section <a href="#sec:view outputs" data-reference-type="ref" data-reference="sec:view outputs">9</a>.
+
+# Digitising mine plans with ArcGIS Pro
+
+## Creating a new mine plan project in ArcGIS Pro
+
+. The digitisation of mine plans is done using the ArcGIS Pro software tool. So open the tool as described above.
+
+1.  First, log in to ArcGIS. CLick sign-in in top-right corner. You will be asked to provide the institutional website. For members of Durham University, this is: <https://DurhamUni.maps.arcgis.com>.
+
+2.  ArcGIS Pro can be unstable sometimes, so make sure you regularly save your progress.
+
+3.  If you are continuing an existing project, type the name of the project in the ’Recent Project’ finder too, or click the ’Open another project’ button. You can then skip one or more of the following steps.
+
+4.  If you start a new project, click on the ’Map’ icon under ’New Project’. It will prompt you for a project name and a location to store in on the local storage drive.
+
+5.  Note that if ArcGIS Pro is run via Durham University’s Appsanywhere, then the project files will be stored on the ’J-drive’. More information on how to access this file storage space and transfer files from/to it, see the Sharepoint folder [here](https://durhamuniversity.sharepoint.com/sites/MyDigitalDurham/SitePages/ServicePage.aspx?Service=%22Personal%20Storage%20%28J%20Drive%29%22). The ArcGIS project will probably be located on the J-drive, in the folder `<username>/My Documents/ArcGIS/Projects/<project>`
+
+6.  Place an image of the mine plan you want to digitize in the `<project>` folder of the newly created ArcGIS project.
+
+7.  Add the mine plan to the ArcGIS project, by right-clicking the ’Map’ item in the Contents pane (on the left), and choose the ’Add Data’ option. Choose the mine plan file. Do not click on ’Band_1’, ’Band_2’, or ’Band_3’, but simply click ’OK’. If asked about ’Calculating statistics for ...’, answer ’No’. This will now add your mine plan, but you won’t see the mine plan appearing in the map yet.
+
+8.  In the Contents pane (on the left), right-click on the mine plan, and choose ’Zoom to Layer’. You should now see the mine plan in the map.
+
+9.  The mine plan does not have a correct location yet (it probably appears at $0^o$E $0^o$N, i.e. somewhere in the middle of the Atlantic Ocean), and needs to be ’georeferenced’, which means that the mine plan needs to be connected to the map in the right geographical location:
+
+    1.  In the Contents pane, click on the mine plan filename.
+
+    2.  In the top menu, click the ’Imagery’ tab, then $\Rightarrow$ Georeference $\Rightarrow$ Add Control Points
+
+    3.  Choose a point on the mine plan that you can accurately connect to a point on the map, e.g. an old building, bridge, church.
+
+    4.  Click on the point on the mine plan, and then (without clicking!) zoom out and in to the related point on the map and click again. This might take a little getting used to: by zooming out from a certain mouse position and then moving in at a different mouse position, you can navigate across the map. Before connecting the first set of points (a point on the mine plan to a point on the map), so you’ll need to zoom out and back in a lot.
+
+    5.  after making the first connection point, the map will be in approximately the right position, and therefore the mine plan will cover the map. So you’ll need to change the transparency to see both the mine plan and the map: click on the ’Raster Layer’ tab, after which you’ll see a ’Transparency’ option that you can change.
+
+    6.  make the second connection point, so that the scale and orientation of the mine plan fit more or less with the map.
+
+    7.  Now add a few more connection points to account for any skewness of the mine plan. Figure <a href="#fig:georeferencing" data-reference-type="ref" data-reference="fig:georeferencing">1</a> shows an example of a georeferenced mine plan.
+
+        <figure id="fig:georeferencing">
+        <img src="media/figures/georeferencing.png" />
+        <figcaption>Example of a georeferenced mine plan. The connection points used for georeferencing are illustrated as ’B’ on the map.</figcaption>
+        </figure>
+
+    8.  Once you are satisfied with the georeferencing, click ’Save’ and then ’Close Georeference’.
+
+## Digitising roadways and galleries
+
+Now we can start with the digitisation. We’ll start with adding the mine galleries and roadways (’pipes’) in the room-and-pillar parts of the mine workings, and then we’ll add any ’goaf’ area for the long-wall mining parts of the mine workings later on. Digitising the galleries and roadways is done as follows.
+
+Note: Please strictly follow the following steps to digitise the mine workings, carefully check and draw the intersection points either between galleries or between galleries and goaf.
+
+1.  In the Catalog pane, expand ’Databases’ to see the pipes in its contents.
+
+2.  Right-click on the `.gdb` file inside the ’Databases’, and choose New $\Rightarrow$ Feature Class. Choose a name (e.g. ’pipes’). In ’Feature Class Type’, choose ’Line’. Un-tick the ’Z-values’ option, since we will assume that seams are horizontal, and will add a uniform depth for the seam later. Click ’Next’ multiple times to check all other options, but default values are probably fine. Click ’Finish’ to initialize the dataset.
+
+3.  Click the output data set that was just created (’pipes’?) in the Contents pane.
+
+4.  Click the Edit tab (if you run ArcGIS Pro via Appsanywhere, choose the Edit tab in ArcGIS Pro, not the one for the Parallels Client).
+
+5.  Click ’Create’ to start creating the pipes. A ’Create Features’ pane will now appear as a second tab next to the ’Catalog’ pane on the rhs.
+
+6.  Click on the ’pipes’ item in the ’Create Features’ pane. A blue box with different options will appear. Make sure the ’line’ option <img src="media/figures/line.png" alt="image" /> is highlighted.
+
+7.  Expand the ’Snapping’ item in the top ribbon to make sure the snapping tool is switched on. This will make sure that lines will be snapped together if the end point of a new line is close enough to a previous line.
+
+8.  Now create a few lines. It can help save time if you draw the lines in a certain order(for example, horizontal first and then vertical). So click at starting point, and click once at each crossroad to make a vertex and double click at end point. It will look like figure <a href="#fig:long_lines" data-reference-type="ref" data-reference="fig:long_lines">2</a>. When you finish drawing horizontal lines, you start to draw vertical lines as Figure <a href="#fig:double_lines" data-reference-type="ref" data-reference="fig:double_lines">3</a>. When you approach each crossroad point, some thing like "pipes: vertex" will appear, you can click on that vertix to guarantee two pipes intersect on that vertex.
+
+    <figure id="fig:long_lines">
+    <img src="media/figures/manual1.png" />
+    <figcaption> Draw lines in a single direction</figcaption>
+    </figure>
+
+    <figure id="fig:double_lines">
+    <img src="media/figures/manual2.png" />
+    <figcaption>Draw lines in the other direction to intersect with the previous lines</figcaption>
+    </figure>
+
+9.  to see previously created lines more clearly, right-click ’pipes’ in the Contents pane, and choose ’Symbology’, which creates a ’Symbology’ tab in the rhs pane. Double click ’line’ on the right side of the ’Symbol’ in that Symbology pane, and then on ’Properties’ next to ’Gallery’. Now change the thickness of the line to 3pt or 4pt, and choose a bright, clearly visible colour. Click on ’Create’ again to continue creating more lines.
+
+10. if you need to modify a line (e.g. because it doesn’t snap into a neighbouring line’, click on ’Modify’, then click-and-drag the end point of the line you want to move to its new position.
+
+11. If you need to delete a previously created line, then in the ’Edit’ tab, drop-down the ’Select’ option, choose ’Line’, then double-click the line you want to delete, and right-click and choose ’Delete’ to remove
+
+12. Once you are finished (or temporarily suspend adding more pipes, press ’Save’. To delete a ’goaf’ area, follow the same procedure, but choose ’Polygon’ instead of ’Line’ in the ’Select’ drop-down menu.
+
+## Digitising goaf areas
+
+If the mine workings contain any goaf area, then these need to be digitised as well. If no goaf areas are present, or if you want to add those later, you can jump straight to the next section. Digitising the goaf areas is done with a similar procedure as for the galleries and roadways.
+
+1.  In the rhs pane, open the ’Catalog’ tab again.
+
+2.  Click on triangle in front of ’Databases’ to look at its contents.
+
+3.  Right-click on the `.gdb` file inside the ’Databases’, and choose New $\Rightarrow$ Feature Class. Choose a name (e.g. ’goaf’). Un-tick the ’Z-values’ option again. Click ’Next’ multiple times to check all other options, but default values are probably fine. Click ’Finish’ to initialize the dataset.
+
+4.  Click the output data set that was just created (’goaf’?) in the Contents pane.
+
+5.  Click the Edit tab, and then ’Create’ to start creating the goaf area.
+
+6.  In the ’Create Features’ pane click on the ’goaf’ item. A blue box with different options will appear. Make sure the ’polygon’ option <img src="media/figures/polygon.png" alt="image" /> is highlighted.
+
+7.  Make sure the snapping tool is again switched on.
+
+8.  Next, with a series of single-clicks, outline the corners of a goaf area and also click when meeting the endpoint of pipes to ensure connections between goaf and galleries(Figure <a href="#fig:goaf_lines" data-reference-type="ref" data-reference="fig:goaf_lines">4</a>). Double-click on the penultimate point (not on the point you started with, since ArcGIS will automatically close the polygon after the final point is added.
+
+    <figure id="fig:goaf_lines">
+    <img src="media/figures/manual3.png" />
+    <figcaption>Draw goaf outlines to intersect with the endpoints of pipes</figcaption>
+    </figure>
+
+9.  Repeat the last task for any other goaf areas you want to add.
+
+10. Once finished, press Save again.
+
+## Preparing data for the GEMSToolbox
+
+Next a Python script is loaded in ArcGIS to perform the digitization. The pipe nodes will be numbered.
+
+1.  Download the latest version of the GEMSToolbox.
+
+2.  Copy the file `src/external_functions/GEMSToolbox.py` to the ArcGIS project folder.
+
+3.  Open the Python window in ArcGIS from the ’View’ tab, by clicking ’Python Window’, which will create an additional Python window at the bottom of the ArcGIS tool.
+
+4.  Open the GEMSToolbox.py file using a text editor (e.g. textedit), and copy the lines from "`# COPY FROM THIS LINE ...`" to "`# ... TO THIS LINE ...`" into the ArcGIS Python window. Press the "Enter" key once or twice to run the pasted commands. This will load in the GEMSToolbox set of Python commands into ArcGIS. Mac users, note that if you run ArcGIS via Appsanywhere, then you need to use the MS Windows shortkey for ’Paste’ (i.e. Control-V, not Command-V).
+
+5.  Make sure the Map view is enabled in ArcGIS otherwise running the commands below will result in some errors.
+
+6.  Next run the following Python command in the ArcGIS Python window:
+
+    > `GEMSToolbox.generate_shapefile(<gallery>, <depth>, <goaf>, `
+    >
+    > \<snap_porous_zone\>)
+
+    in which:
+
+    - `<gallery>` is the name of the Feature Class that contains the galleries/roadways inside double quotes (e.g.: `"pipes"`),
+
+    - `<depth>` the depth of the coal seam in meters below the surface (e.g. `-65`),
+
+    - `<goaf>` (optional argument) the name of the Feature Class containing the snapped goaf areas created in the previous step, inside double quotes (e.g. `"goaf"` or `"goaf_snapped"` if you used the optional step 5.) If you have no goaf areas, then leave out the last argument.
+
+    - `<snap_porous_zones>` If you are confident that your goaf areas have been correctly connected to the galleries and then set to False. Therefore carefully check your connections before you take this step.
+
+    - Note that this symbol `<>` for each item should be removed after you replace them using specific values.
+
+    One example is like: `GEMSToolbox.generate_shapefile("pipes", -65, "goaf", "False")`
+
+7.  This Python script might take a while to run, particularly if your digitised mine system is large. Once finished, it produces a number of files with the same base name, as listed in the Python window (typically `complete_set_feature_1`. The first copy of the file is saved into your ArcGIS project database, the second is located into your project directory to be easily accessed. Copy all the `complete_set_feature_1` files located into the project directory over to the `maps` folder of the GEMSToolbox (you may want to create a subfolder inside `maps` to keep the folder tidy). This completes the digitisation process in ArcGIS Pro.
+
+8.  If you are confident all your connections between pipe lines and goaf polygons are perfectly done as the above steps without missing any connections between two nodes, you can run your model using GEMSToolbox smoothly. However, you might meet problems sometimes, especially when you run the model with complex goaf zones. If such, you need to adjust the parameters Qth and flow_error_threshold. Their default values are set to 1E-7 and 1E-15, respectively. In most cases, you can gradually increase Qth in Excel sheet to a a bit larger value, but better not greater than 1E-4. If the problem still can’t be solved, please contact yuxiao.wang2@durham.ac.uk.
+
+# Digitising mine plans with QGIS
+
+## Preparation
+
+To use and set up QGIS for the purpose of mine plan digitisation, the following tasks are needed:
+
+1.  Install the latest stable version: for this, the user is referred to [the QGIS website](https://docs.qgis.org/3.34/en/docs/user_manual), Section 5.1.
+
+2.  Start QGIS
+
+3.  Basemaps: QGIS doesn’t start automatically with a basemap. The first time, you need to install basemaps:
+
+    1.  Install a plugin to enable that. Choose top menu "Plugins" $\rightarrow$ "Manage and Install plugins", and find "QuickMapServices" in list on the left. Install and enable the plugin
+
+    2.  Install the main list of standard maps: Choose top menu "Web" $\rightarrow$ QuickMapServices $\rightarrow$ Settings. Click on tab "More Services", and choose "Get contributed pack".
+
+    3.  Once basemaps are installed, choose your basemap from top menu "Web" $\rightarrow$ QuickMapServices.
+
+4.  Set the coordinate system to an orthogonal British National Grid system (or equivalent if working on areas outside the UK): at the bottom-right of the QGIS window, click on the CRS item ("Current CRS: ..."). In ’Filter’, type "EPSG:27700", and choose "EPSG:27700 - OSGB36 / British National Grid", then click "OK".
+
+## Georeferencing mine plans
+
+Now import the mine plan to be georeferenced:
+
+1.  Top menu "Layer" $\rightarrow$ "Georeferencer". This opens a new window.
+
+2.  Choose the map file to be imported: top menu "File" $\rightarrow$ "Open Raster …". This opens the map in this Gereferencer window.
+
+3.  Go to top menu "Settings" $\rightarrow$ "Transformation Settings". Set the “Transformation Type” to "Polynomial 1" (default is "Linear" which does not work, since it doesn’t rotate maps).
+
+4.  Choose the "Output file" where the georeferenced version of the file will be stored.
+
+5.  Tick the box "Use o for Transparency when needed": this will avoid a black ‘frame’ around the map if the map needs rotation once it is overlain onto the basemap.
+
+6.  Leave the other options as default and click "OK".
+
+7.  Set at least 4 control points, which are points on the map and the corresponding point on the basemap:
+
+    1.  Zoom in/out of the map in the georeferencer (without clicking!) to the location of the first control point
+
+    2.  Click on the map to define the first control point
+
+    3.  Now a new window "Enter Map Coordinates" appears: click on "From Map Canvas" in bottom-left to choose the corresponding point on the basemap, and this will redirect you to the basemap in the main QGIS window.
+
+    4.  Zoom in/out (again without clicking) to the corresponding point on the basemap and click at the location. - Now the "Enter Map Coordinates" window appears in front again. Click on “OK” in there. Now your first control point is created, and the “Georeferencer” window appears in front.
+
+    5.  Repeat these steps for the 2nd and following control points.
+
+8.  Once you are happy with the control points, click on the green triangle button in the georeferencing window (or choose top menu "File" $\rightarrow$ "Start Georeferencing". Your georeferenced map will now appear on top of the basemap in the main QGIS window as a new layer.
+
+9.  Change the transparancy of the map by right-clicking on the map layer, choose "properties" (which opens the “Layer properties” window), choose "transparancy" in the list on the left. At the top, move the “Global Opacity” bar to around 50%. Press "OK".
+
+10. Now you should be able to see both the map and the basemap underneath, and you can check if the map is properly georeferenced. ’item If you want to make changes, the "georeferencer" window should still be open, so you can remove control points (right-click on the point in the table, and choose remove), or add more points, then repeat the "Start Georeferencing" again, which will create another layer. Then remove the first map layer, since you only need the new one.
+
+Don’t forget to regularly save the project: top menu "Project" $\rightarrow$ "Save".
+
+## Digitising a mine plan
+
+Now that mine plan is imported and georeferenced, the next step is to digitise the mine plan. We first digitise any galleries and roadways, and then any goaf areas. If your mine plan only contains galleries/roadways or only contains goaf, then proceed with just digitising those only. Digitising x-y coordinates for any mine plan features is explained in Sections <a href="#sec:digitising_galleries" data-reference-type="ref" data-reference="sec:digitising_galleries">7.3.1</a> and <a href="#sec:digitising_goaf" data-reference-type="ref" data-reference="sec:digitising_goaf">7.3.2</a>. Section <a href="#sec:digitising_depth" data-reference-type="ref" data-reference="sec:digitising_depth">7.3.3</a> explains how to digitise the depth of a mine plan, either as a constant-depth flat plane, or as a variable-depth dipping or curving plane.
+
+### Digitising galleries and roadways
+
+To create a network of galleries:
+
+1.  Choose "Layer" $\rightarrow$ "Create Layer" $\rightarrow$ "New Shapefile Layer ...". Click on the 3 dots to choose a file name and appropriate path (just typing a file name in the box left of the 3 dots puts the file in the default (and probably wrong) folder). Choose: "Geometry Type" $=$ "LineString", "Coordinate system" = "EPSG:27700 -OSGB36 / British National Grid" (or equivalent if working dealing with an area outside the UK). Leave all other parameters blank or default, and click "OK"
+
+2.  Now a new layer is created, visible in the QGIS "Layers" window, together with the map: click on the layer to highlight it.
+
+3.  Click on the pencil icon ("Toggle Editing") in the 2nd row, and then on the Line-with-Star icon ("Add Line Feature") to the right of it.
+
+4.  Switch on the snapping tool: "Project" $\rightarrow$ "Snapping Options". A thin, wide window appears with all options: first box: snapping $=$ on (grey instead of white); third box: tick Vertex, Segment, Line Endpoints. Close the window.
+
+5.  Now the mouse point should have a ’target’ shape, and you can start creating lines. Click on the start point, then on the end point of the line. Then right-click and click ‘OK’. Repeat this for next lines. Multi-segment lines should work as well.
+
+6.  Note that long lines crossing other lines is fine: the postprocessing method will automatically split these long lines in individual segments.
+
+7.  When finished, click on the pencil icon again, and choose the option to save the changes.
+
+### Digitising goaf areas
+
+To create one or more goaf areas:
+
+1.  Choose "Layer" $\rightarrow$ "Create Layer" $\rightarrow$ "New Shapefile Layer ...". Click on the 3 dots to a choose file name and appropriate path (just typing a file name in the box left of the 3 dots puts the file in the default (and probably wrong) folder). Choose: "Geometry Type" $=$ "Polygon", "Coordinate system" = "EPSG:27700 -OSGB36 / British National Grid" (or equivalent if working dealing with area outside UK). Leave all other parameters blank or default, and click "OK"
+
+2.  Now a new layer is created, visible in the Layer window, together with the map: click on the layer to highlight it.
+
+3.  Click on the pencil icon ("Toggle Editing") in the 2nd row, and then on the Green-polygon-with-Star icon ("Add Polygon Feature") to the right of it.
+
+4.  Make sure that the snapping tool is still on. Note that, for GEMSToolbox to create a viable solution, all galleries and goaf areas need to be connected, so your goaf area should have at least one point in common (i.e. snapped to) a node of the line galleries. Also note that galleries and goaf areas should not overlap. This means that any edge of the gaof zone cannot also be a gallery.
+
+5.  Now the mouse point should again have a ’target’ shape, and you can start creating the outline of the first polygon. Click on the start point, then subsequent points. When you are ’back’ near the start point, don’t click on the start point again, as the polygon feature will automatically close the polygon. Now right-click and click ‘OK’.
+
+6.  Repeat this for any subsequent polygons.
+
+7.  When finished, click on the pencil icon again, and choose the option to save the changes.
+
+### Digitising depth of mine plans
+
+If a mine plan is modelled using a fixed depth for the entire plan, this Section <a href="#sec:digitising_depth" data-reference-type="ref" data-reference="sec:digitising_depth">7.3.3</a> can be skipped, and this depth is dealt with in Section <a href="#sec:QGIS2GEMS" data-reference-type="ref" data-reference="sec:QGIS2GEMS">7.4</a>.
+
+If a mine plan significantly deviates from being flat, then its depth needs to be explicitly digitised. For that, we need several points on the mine plan where depth is known. The geographical spread of these points should cover the extent of the digitised mine plan in Sections <a href="#sec:digitising_galleries" data-reference-type="ref" data-reference="sec:digitising_galleries">7.3.1</a> and <a href="#sec:digitising_goaf" data-reference-type="ref" data-reference="sec:digitising_goaf">7.3.2</a>. The following digitisation method will create a smooth 3-D layer as QGIS shapefile that interpolates between the depth points (but won’t extrapolate beyond the lateral extent of those depth points). The x-y coordinates of the features digitised in Sections <a href="#sec:digitising_galleries" data-reference-type="ref" data-reference="sec:digitising_galleries">7.3.1</a> and <a href="#sec:digitising_goaf" data-reference-type="ref" data-reference="sec:digitising_goaf">7.3.2</a> will be ’draped’ onto this 3-D layer to provide a z-coordinate for every x-y coordinate.
+
+The following QGIS procedure should be used:
+
+1.  Create a QGIS layer with depth points:
+
+    1.  Choose "Layer" $\rightarrow$ "Create Layer" $\rightarrow$ "New Shapefile Layer"
+
+    2.  Choose a file name for the 3-D layer (make sure to choose the correct folder!)
+
+    3.  Choose Geometry type = Point
+
+    4.  "New Field:"
+
+        1.  "Name" = "Elevation" (suggested: any name is fine, in this manual "Elevation" is assumed further down)
+
+        2.  "Type" = "Decimal (double)"
+
+        3.  Click "Add to Fields List"
+
+    5.  Click "ID" in Fields List and then click on "Remove Field" below the list
+
+    6.  Click "OK"
+
+2.  Highlight the new layer in the "Layers" panel
+
+    1.  Click the ’pencil’ icon ("Toggle Editing")
+
+    2.  Click the ’star-and-three-dots’ icon ("Add Point Feature")
+
+    3.  Click at a point where depth is known; When asked for "Elevation", enter a depth value in meters and click "OK"
+
+    4.  Repeat this for all points you want to include for interpolation of the 3D depth layer.
+
+3.  Open the "Processing Toolbox" if not already open ("Processing" $\rightarrow$ "Toolbox")
+
+    1.  Type "IDW interpolation" in the Search box
+
+    2.  Choose "Interpolation $\rightarrow$ "IDW Interpolation". This will open a new window. N.B. this will use IDW $=$ Inverse-Distance-Weighting", which creates a smooth layer. If you prefer linear interpolation, there is another interpolation type called "TIN Interpolation". This option is not discussed here, but works very similar to IDW interpolation.
+
+    3.  Choose "Vector Layer" $=$ your point layer that you’ve just created
+
+    4.  This should now show "Elevation" as attribute. Click the green "+" button
+
+    5.  Scroll down in the window to set "Extent" $=$ "Calculate from Layer", and choose your point layer. Other extent options might be worth trying if you are interested.
+
+    6.  Click "Run" and it should produce a new later with smooth depths between your set points. This file will be stored under the same name with a .tif extention, indicating that is a ’geotiff’ file type. This file name will be needed in the next section. You may want to move this new layer to below your other layers so that it is plotted ’behind’ those other layers.
+
+## Convert line and polygon features into GEMSToolbox shapefiles
+
+Now some processing of those line and goaf features is needed to make them suitable for the GEMSToolbox calculation: multi-segment lines need to be split into individual lines, crossing lines need splitting up, lines and polygon features need to be merged, nodes need a unique numbering, and those nodes need attributes to store additional information (such as which line of polygon each node belongs to). This can all be done automatically using a Python script that can run inside QGIS. Here are the steps to enable this:
+
+1.  Copy the script ${\tt QGIS2GEMSTb.py}$ from the GEMSToolbox folder ${\tt src/external\_functions}$ to the QGIS project folder.
+
+2.  Open the `QGIS2GEMSTb.py` file using any text editor. Scroll to the main code at the end of the file, and modify the following two lines:
+
+               line_file   = "pipes.shp"
+               goaf_file   = "goaf.shp"
+
+    by inserting the name you created for the shapefiles for the galleries and goaf features. If you only have digitised roadways, just leave the ${\tt goaf\_file}$ empty:
+
+               goaf_file   = ""
+
+    or provide a non-existent filename: if the script cannot find a file, it will assume no digitised goaf area is present. Similarly, if you only have digitised one or more goaf zones, provide an empty or non-existent ${\tt line\_file}$ :
+
+               line_file   = ""
+
+    By default, the output of the script will be written to a shapefile defined in the line:
+
+               GEMSTb_file = "QGIS_digitised_map.shp"
+
+    This can be modified if needed/desired, e.g. when dealing with multiple worked seams (see below).
+
+    If you want a fixed depth of your mine plan, set the parameter to the right value, e.g. 100 m depth:
+
+               height = -100.
+
+    Note that a negative value of ${\tt height}$ represents the depth of the mine workings. If you have created a variable depth layer in Section <a href="#sec:digitising_depth" data-reference-type="ref" data-reference="sec:digitising_depth">7.3.3</a>, enter that for the variable ${\tt z\_layer\_file}$, e.g.:
+
+               z_layer_file = "slope_raster_IDW.tif"
+
+    As for the other file names, if the file name is empty or the file does not exist, then the script will assume that no variable depth is required, and the value of the parameter ${\tt height}$ will be used instead.
+
+    Save the changes when ready.
+
+3.  In QGIS, Open the Python Console in "Plugins" $\rightarrow$ "Python console". This should open the console below your map.
+
+4.  Inside the console, click the "Show Editor" icon (lined paper-with-pencil icon).
+
+5.  Inside the newly opened editor, click the "Open Script ..." icon (folder icon) to open the ${\tt QGIS2GEMSTb.py}$ script.
+
+6.  Run the script by pressing the "Run" button (green triangle).
+
+7.  If all went well, it should produce some output ending with "STEP 6: Adding GEMSTb attributes COMPLETED". It will have created a set of files starting with `QGIS_digitised_map.*`.
+
+8.  In the GEMSToolbox folder system, go to the folder ${\tt data/maps}$ and create a new folder for the digitised mine plans. Copy all the `QGIS_digitised_map.*` files from the QGIS project folder to this new folder.
+
+The process of creating lines and polygons can be repeated if multiple mine workings are modelled together. Each worked seam then gets its own GEMSToolbox shapefile. But keep in mind that, if you create those different mine workings in the same QGIS folder, the files `QGIS_digitised_map.*` will need different names for the different seams.
+
+# Running GEMSToolbox with the newly created digitised map
+
+## Creating a custom input file
+
+1.  Using the MacOS Finder or Windows Explorer navigate to `<homeGEMSTb>/data` then make a copy of the `Grid_demo.xlsx` or any of the templates provided.
+
+2.  Rename the copy to anything you want, but keep the Excel `.xlsx` extension. For now we will call this `CustomScenario.xlsx`
+
+3.  Open your `CustomScenario` file in a spreadsheet editor. You can now customise any of the parameters as you wish using the information provided in the keyword glossary (Section <a href="#sec:glossary" data-reference-type="ref" data-reference="sec:glossary">10</a>) below. Note that if a parameter is not listed in the input file, the code will use its default value, as listed in Section <a href="#sec:glossary" data-reference-type="ref" data-reference="sec:glossary">10</a>.
+
+4.  On the command line, move to the `<homeGEMSTb>` folder, and run the following command to start the calculation:  
+    `python GEMSTb.py data/CustomScenario.xlsx`
+
+5.  If your input file contains multiple models (i.e. multiple columns), you can run the code in parallel:  
+    `python GEMSTb.py data/CustomScenario.xlsx –num_workers N`  
+    where `N` is the numbers of parallel threads you would like to use.
+
+# View outputs
+
+The outputs of each Scenario input file are saved in the `outputs/[scenario_filename]` folder. The outputs consist of:
+
+- A `.vtk` file for each of the runs in that scenario named: `[scenario_filename]_[tag]_[runindex]`
+
+- A `.csv` file which records the relative temperature of each outflow node in each run. The relative temperature $T_r$ is given by $T_r = T_{out}/\Delta T$, where $\Delta T = |T_{r,max} - T_{w,min}|$, i.e. the difference between maximum rock temperature and minimum water temperature.
+
+The `.vtk` file contains all the output information as set in the input file, and these can be viewed using Paraview. Here are a few basic steps to create a plot to view the results.
+
+1.  Open Paraview
+
+2.  Click on the folder icon <img src="media/figures/folder_icon.png" alt="image" /> in the top-left corner, and navigate to the `.vtk` file, press ’OK’.
+
+3.  click ’Apply’. You should now be able to view the temperature solution.
+
+4.  To view a different parameter (e.g. water velocity or hydraulic head), choose a different parameter from the drop-down menu on the second row that now states "T(C)".
+
+5.  To re-scale the colour bar to the full range of values, use the <img src="media/figures/double-arrow_icon.png" alt="image" /> icon.
+
+6.  To change the line width of the galleries, click to highlight the v̇tk file in the "Pipeline Browser" panel at the top-left, and then, in the "Properties" panel at the bottom-left scroll down to "Line Width".
+
+7.  To get information about a specific node in the network, click the <span class="image placeholder" original-image-src="figures/dot?_icon.png" original-image-title="" height="\baselineskip">image</span> icon, and click ’OK’. Now zoom in onto the area of interest, and hover the mouse over a node to see the available information.
+
+8.  There are a lot of options to customise the plot further. One handy option in Paraview is that you can save the customised view as a ’state’, and then load it back in later on, for the same or for a different data set. To do that, choose ’File’ $\Rightarrow$ ’Save State...’, which saves the state as a `.pvsm` file. Next time you use Paraview, you can use the same state by, instead of using the <img src="media/figures/folder_icon.png" alt="image" /> icon to load a `.vtk` file, use ’File’ $\Rightarrow$ ’Load State...’, and choose the previously saved `.pvsm` file. In the ’Load State Data File’ option, choose ’Choose File Names’, and choose the `.vtk` file to display, then press ’OK’. The `outputs` folder in the GEMSToolbox code already contains a `.pvsm` file to get started.
+
+9.  Change the background colour, find the ’Background’ section in ’Properties’, untick ’Use Color Palette For Background’, click background button to choose suitable colour (Figure <a href="#fig:background" data-reference-type="ref" data-reference="fig:background">5</a>).
+
+    <figure id="fig:background">
+    <img src="media/figures/backgroundcolor.png" />
+    <figcaption>Change the background colour</figcaption>
+    </figure>
+
+10. Change title/text font colour. When the background colour is changed, the legend title/text font colour might also need to be changed. Click ’edit colour map’ <img src="media/figures/color icon.png" alt="image" /> to open colour map editor. Then click ’Edit colour legend properties’ button <img src="media/figures/legend colour.png" alt="image" /> to open ’Edit Colour Legend Properties’, choose the suitable colour for legend title and text.
+
+# Input Keyword Glossary
+
+This section describes the properties that can be set in the input file. Any property not set up in the input file will be read from the `config/default_params.yml` file. The format of the parameters in the Excel input file is such that only numbers, strings, space, commas (,), and square brackets (\[ \]) are allowed in the input Excel file. 2D arrays can be inputted as \[1 2\] \[3 4\] or \[\[1,2\], \[3,4\]\]. Formatting using other symbols like \[1 2 ; 3 4\] or 1 2 ; 3 4 is not allowed.
+
+- **a** (0.5): the damping oscillation factor applied to the flow at iteration n-1.
+
+- **ArcGIS_file_name** (no default): the path to the shapefiles to be used to generate the geometry with `step_load_GIS_geometry`. The format is `[<directoryPath>/<fileName1>.shp, <directoryPath>/<fileNameN>.shp]`.
+
+- **b** (0.5): the damping oscillation factor applied to the flow at iteration n.
+
+- **connections** (\[ \]): list of node ID doublets to create connecting pipes (e.g. to connect different seams)
+
+- **Cp_f** (4186 J/K/kg) specific heat capacity of the mine water
+
+- **Cp_r** (960 J/K/kg) specific heat capacity of the rocks
+
+- **d_set** (2.25 m) diameter of the mine galleries
+
+- **eps** (0.1 m): mine gallery roughness parameter
+
+- **fixed_head_node** (\[\[2, 0.0\]\]): node nr where hydraulic head is fixed
+
+- **flow_error_threshold** ($1.0 \times 10^{-15}$): numerical accuracy of the flow solver
+
+- **gis_overrides** ( ): parameters to be overriden using the value found in the GIS files.
+
+- **grid_height** (3): nr of grid points in y-direction (used for structured grids only)
+
+- **grid_width** (3): nr of grid points in x-direction (used for structured grids only)
+
+- **gw_darcy_velocity** (0 m/s): Darcy velocity of the regional groundwater into the mine.
+
+- **h_pipe_length** (50 m): x-length of each gallery segment (used for structured grids only)
+
+- **Hydraulic_conductivity** (0.03 m/s): Hydraulic conductivity of porous zones (goaf and collapsed/backfilled galleries)
+
+- **igeom** (`step load_GIS_geometry`): specifies the geometrical function file to be used by the code. Two options are available: 1) `step load_GIS_geometry` (will read structure from GIS shapefile), and 2) `step_grid_geometry` (will generate uniform grid )
+
+- **int_d** (1000): nr points to evaluate the thermal interference between galleries
+
+- **k_f** (0.58 W/m,K): fluid thermal conductivity
+
+- **k_r** (2.6 W/m,K): rock thermal conductivity
+
+- **mat_d_prop** (\[5.0\] m: array to set different diameter to specific pipes specified with `mat pipe_ids`
+
+- **mat_K_prop** (\[0.03\] m/s: array to set different hydraulic conductivities to specific pipes specified with `mat pipe_ids`
+
+- **mat_pipe_ids** (\[ \]): array to pipe IDs for which non-default diameter or hydraulic conductivity values apply. See also parameters mat_d_prop and mat_K_prop.
+
+- **mat_prop_case** (1): the switch case code used to apply the material properties to the model (currently porosity and hydraulic conductivity). 1: sets porosity to 1 for all pipes (i.e. all pipes are considered open). 2: sets all the pipes to the porosity and hydraulic conductivity specified in the **porosity** and **Hydraulic_conductivity** input keywords respectively. 3: uses a Perlin Noise map to set the porosity values of the pipes, and beyond a certain threshold (specified in **open_th** keyword) all the pipes are considered open with a porosity of 1. The value specified in the **Hydraulic_conductivity** input keyword is used as the hydraulic conductivity in all pipes. 4: like 3, but around a radius specified by the **well_exclusion_th** input keyword, where all pipes are considered open. 5: like 4 but instead of forcing open pipes around the wells, we force porous pipes.
+
+- **max_sim_time** (20 yrs): the maximum time it should take for water to reach the end of any given pipe. Beyond which the outflow temperature of a pipe will be considered to be that of the initial rock temperature.
+
+- **mesh_density** (100 m): The maximum mesh size the model will try to achieve in 2D porous goaf areas.
+
+- **n_steps** (10): the number of steps it takes the water to flow through a pipe.
+
+- **no_seams** (1): number of seams for scenario of regular structured grids (if igeom $==$ step load_GIS_geometry)
+
+- **node_outputs** (Tn T(C), head Head(m), tt_n transit_times(yrs), wells Well_positions, n_tree_idx, Tree_pos, node_id node_id\]): specifies the desired nodal outputs to be saved in the vtk file for each run. List of valid node outputs:
+
+  - node_id: the id of the node found in the underlying GIS files or/and ID to be used to set inflow, outflow, or fixed head nodes.
+
+  - Tn: the nodal temperatures of the model.
+
+  - head: the nodal hydraulic heads of the model.
+
+  - tt_n: the time it takes water to flow from the closest net inflow point to this node.
+
+  - wells: indicates the inflow (1), outflow (-1) and fixed head (0) nodes. All other nodes have a NaN value.
+
+  - n_tree: the position of nodes in the tree used to sequentially solve the heat transfer.
+
+- **nu_f** (1.2e-06 Pa s): dynamic viscosity of the mine water.
+
+- **nyrs** (3 yrs): the number of simulation years is to be run for.
+
+- **open_th** (0.5): threshold value of (random) porosity above which a pipe is considered ’open’. Applies to the cases where mat_prop_case $>$ 1.
+
+- **pipe_outputs** (\[pipe_id pipe_id, vs Water_velocity(m/s), Q_real Flow_rate(m3/s), poro_e Porosity($\mathrm{m^3/m^3}$), Re Re(-), d Pipe_diameters(m), alphas Alpha, rp R_0, dT_model Heat_Model_dT(C)\]): specifies the desired pipe outputs to be saved as cell values in the vtk file for each run. List of valid pipe outputs:
+
+  - pipe_id: the id of the pipes as held within the GEMS toolbox.
+
+  - Re: the Reynolds number.
+
+  - v: the water velocity inside the pipe (m/s) assumed uniform.
+
+  - Qv: the vectorised flow rate through the pipes (m$^3$/s). Saved as a vector in VTK with an x, y and z component.
+
+  - Q: the absolute flow rate through the pipes. Is equal to the magnitude of Qv.
+
+  - poro: the porosity of each pipe.
+
+  - rp: the radial distance of the thermal front inside an infinite homogeneous porous rock.
+
+  - Tp: a vectorised value holding two components labelled x and y. x corresponding to the inflow temperature of the pipe and y to its outflow temperature.
+
+  - pmod: indicates which case of the statement is used in the heat calculation code.
+
+  - Qdiff: the flow difference in the pipe between the last and penultimate iteration in the flow computation.
+
+  - K: hydraulic conductivity.
+
+  - d: pipe diameter.
+
+- **Porosity** (0.3): the porosity of the any backfilled or collapsed pipes.
+
+- **q_in** (\[1\]): array of injection node ID(s).
+
+- **q_out** (\[3\]): array of abstraction node ID(s).
+
+- **qset** (\[0.01\] $\mathrm{m^3/s}$): the flow rate in/out of each injection and abstraction wells
+
+- **Qth_tree** (1.0e-07): the cut-off value for the flow comparison check used when disregarding a node for the computation of the flow tree required for the sequential heat calculations. This might need adjusting if porous pipes sections of the models are not added to the tree.
+
+- **rho_f** (1000 $\mathrm{kg/m^3}$): density of the mine water.
+
+- **rho_r** (2400 $\mathrm{kg/m^3}$): density of the rock mass surrounding the mine.
+
+- **rng_seed** (1): random number generatore seed used for random porosity models (when mat_prop_case $>$ 1)
+
+- **seam_spacing** (100 m): spacing of seams in regular grid models (when igeom $==$ step_grid_geometry)
+
+- **Tag** ( ): allows you to specify a tag that will be added to the output .vtk filename.
+
+- **Tf_ini** (\[3\] $\mathrm{{}^o}C$): array of the same length as for parameter q_in with water injection temperature(s).
+
+- **Tr** (\[-0.032, 8.8\] $\mathrm{{}^o}C/m$, $\mathrm{{}^o}C$): Rock temperature definition: first parameter is the vertical gradient, while the 2nd value is the rock temperature at the surface.
+
+- **v_pipe_length** (50 m): y-length of each gallery segment (used for structured grids only)
+
+- **well_exclusion_th** (30 m): avoid porous zones within well_exclusion_th from the injection or abstraction wells.
+
+# Adding additional parameters
+
+To compute some of your inputs you might want to perform intermediate calculations based on some additional parameters. To do this you can simply add another parameter, give it a name in the first column, with no spaces, and populate ALL the columns where a scenario is already defined. You can then use this parameter with Excel’s inbuilt capabilities to compute your desired parameters. This should enable you to keep track of all the parameters used to obtain your inputs in the same file. Note that, ’loose’ numbers in other parts of the spreadsheet will cause errors.
+
+# Troubleshooting
+
+## ArcGIS common problems
+
+## GEMSToolbox common problems and errors
+
+- **Gmsh configuration:** GEMSToolbox makes use of a meshing software Gmsh by calling Gmsh Python API. However, incorrect Gmsh configurations can occasionally result in errors. To ensure proper functionality, install Gmsh using the pip package manager command “**`pip install gmsh`**” rather than the Conda command `conda install gmsh`. If the problem persists, you can download the standalone Gmsh executable directly from the official website: <https://gmsh.info/#Download>. Then run “`python GEMSTb.py <model>.xlsx <gmsh-path>`”, where refers to the path of the Gmsh executable. For example on Windows: **`python GEMSTb.py .\data\testmineplan.xlsx D:\gmsh-4.13.1-Windows64\gmsh`**. GEMSToolbox will call the external Gmsh excutable.
+
+- GEMSToolbox versions from May 2025 or older were using an input file with a different format (using a horizontal rather than vertical layout). If you have ’old’ input files that you would like to run with the latest version of GEMSToolbox, you can convert the input file to the new format using the Python script `convert_input_xlsx.py`. To run the script:  
+  `python convert_input_xlsx.py <old_scenario_file>`  
+  This will create a new input file in the folder where this script is run with `_transposed` in its file name. If needed, you can then rename this new parameter file and/or move it to the desired folder.
+
+## Paraview common problems
+
+- **Line width of cell attributes:** On MacOS systems, lines don’t render correctly if the Line Width is larger than $1.0$. The problem is discussed in [this forum post](https://discourse.paraview.org/t/cell-values-partly-disappear-when-editing-width-on-mac/11666). A partial work-around is to convert the lines (i.e. cell data) into interpolated points (i.e. point data). To do this, click on the data set in the Pipeline Browser’ which contains the line data. Then choose the ’Filters’ tab, then ’Alphabetically’, and then ’Cell Data to Point Data’. Choose your line data to plot, and you should be able to use larger Line Widths now. The difference is that the original line data has uniform line values, whereas the derived ’Cell Data to Point Data’ dataset interpolates between the points on either end of the line. So for rapidly changing values, it might not be what you want.
