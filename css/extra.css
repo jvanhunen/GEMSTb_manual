@@ -1,8 +1,3 @@
 html {
   font-size: 14px;
 }
-.inline-img {
-    width: 50%;       /* desired width */
-    height: auto;       /* preserves aspect ratio */
-    vertical-align: middle;  /* keeps it inline with text */
-}
