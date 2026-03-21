@@ -137,7 +137,7 @@
 <p>Install the main list of standard maps: Choose top menu "Web" &rarr; QuickMapServices &rarr; Settings. Click on tab "More Services", and choose "Get contributed pack".</p>
 </li>
 <li>
-<p>Once basemaps are installed, choose your basemap from top menu "Web" $\rightarrow$ QuickMapServices.</p>
+<p>Once basemaps are installed, choose your basemap from top menu "Web" &rarr; QuickMapServices.</p>
 </li>
 </ol>
 </li>
@@ -149,7 +149,7 @@
 <p>Now import the mine plan to be georeferenced:</p>
 <ol>
 <li>
-<p>Top menu "Layer" $&rarr; \rightarrow$ "Georeferencer". This opens a new window.</p>
+<p>Top menu "Layer" $&rarr; "Georeferencer". This opens a new window.</p>
 </li>
 <li>
 <p>Choose the map file to be imported: top menu "File" &rarr; "Open Raster …". This opens the map in this Gereferencer window.</p>
@@ -187,7 +187,7 @@
 </ol>
 </li>
 <li>
-<p>Once you are happy with the control points, click on the green triangle button in the georeferencing window (or choose top menu "File" $\rightarrow$ "Start Georeferencing". Your georeferenced map will now appear on top of the basemap in the main QGIS window as a new layer.</p>
+<p>Once you are happy with the control points, click on the green triangle button in the georeferencing window (or choose top menu "File" &rarr; "Start Georeferencing". Your georeferenced map will now appear on top of the basemap in the main QGIS window as a new layer.</p>
 </li>
 <li>
 <p>Change the transparancy of the map by right-clicking on the map layer, choose "properties" (which opens the “Layer properties” window), choose "transparancy" in the list on the left. At the top, move the “Global Opacity” bar to around 50%. Press "OK".</p>
@@ -196,14 +196,14 @@
 <p>Now you should be able to see both the map and the basemap underneath, and you can check if the map is properly georeferenced. ’item If you want to make changes, the "georeferencer" window should still be open, so you can remove control points (right-click on the point in the table, and choose remove), or add more points, then repeat the "Start Georeferencing" again, which will create another layer. Then remove the first map layer, since you only need the new one.</p>
 </li>
 </ol>
-<p>Don’t forget to regularly save the project: top menu "Project" $\rightarrow$ "Save".</p>
+<p>Don’t forget to regularly save the project: top menu "Project" &rarr; "Save".</p>
 <h2 id="digitising-a-mine-plan">Digitising a mine plan</h2>
 <p>Now that mine plan is imported and georeferenced, the next step is to digitise the mine plan. We first digitise any galleries and roadways, and then any goaf areas. If your mine plan only contains galleries/roadways or only contains goaf, then proceed with just digitising those only. Digitising x-y coordinates for any mine plan features is explained in Sections <a href="#sec:digitising_galleries" data-reference-type="ref" data-reference="sec:digitising_galleries">7.3.1</a> and <a href="#sec:digitising_goaf" data-reference-type="ref" data-reference="sec:digitising_goaf">7.3.2</a>. Section <a href="#sec:digitising_depth" data-reference-type="ref" data-reference="sec:digitising_depth">7.3.3</a> explains how to digitise the depth of a mine plan, either as a constant-depth flat plane, or as a variable-depth dipping or curving plane.</p>
 <h3 id="digitising-galleries-and-roadways">Digitising galleries and roadways</h3>
 <p>To create a network of galleries:</p>
 <ol>
 <li>
-<p>Choose "Layer" $\rightarrow$ "Create Layer" $\rightarrow$ "New Shapefile Layer ...". Click on the 3 dots to choose a file name and appropriate path (just typing a file name in the box left of the 3 dots puts the file in the default (and probably wrong) folder). Choose: "Geometry Type" $=$ "LineString", "Coordinate system" = "EPSG:27700 -OSGB36 / British National Grid" (or equivalent if working dealing with an area outside the UK). Leave all other parameters blank or default, and click "OK"</p>
+<p>Choose "Layer" &rarr; "Create Layer" &rarr; "New Shapefile Layer ...". Click on the 3 dots to choose a file name and appropriate path (just typing a file name in the box left of the 3 dots puts the file in the default (and probably wrong) folder). Choose: "Geometry Type" $=$ "LineString", "Coordinate system" = "EPSG:27700 -OSGB36 / British National Grid" (or equivalent if working dealing with an area outside the UK). Leave all other parameters blank or default, and click "OK"</p>
 </li>
 <li>
 <p>Now a new layer is created, visible in the QGIS "Layers" window, together with the map: click on the layer to highlight it.</p>
@@ -212,7 +212,7 @@
 <p>Click on the pencil icon ("Toggle Editing") in the 2nd row, and then on the Line-with-Star icon ("Add Line Feature") to the right of it.</p>
 </li>
 <li>
-<p>Switch on the snapping tool: "Project" $\rightarrow$ "Snapping Options". A thin, wide window appears with all options: first box: snapping $=$ on (grey instead of white); third box: tick Vertex, Segment, Line Endpoints. Close the window.</p>
+<p>Switch on the snapping tool: "Project" &rarr; "Snapping Options". A thin, wide window appears with all options: first box: snapping $=$ on (grey instead of white); third box: tick Vertex, Segment, Line Endpoints. Close the window.</p>
 </li>
 <li>
 <p>Now the mouse point should have a ’target’ shape, and you can start creating lines. Click on the start point, then on the end point of the line. Then right-click and click ‘OK’. Repeat this for next lines. Multi-segment lines should work as well.</p>
@@ -228,7 +228,7 @@
 <p>To create one or more goaf areas:</p>
 <ol>
 <li>
-<p>Choose "Layer" $\rightarrow$ "Create Layer" $\rightarrow$ "New Shapefile Layer ...". Click on the 3 dots to a choose file name and appropriate path (just typing a file name in the box left of the 3 dots puts the file in the default (and probably wrong) folder). Choose: "Geometry Type" $=$ "Polygon", "Coordinate system" = "EPSG:27700 -OSGB36 / British National Grid" (or equivalent if working dealing with area outside UK). Leave all other parameters blank or default, and click "OK"</p>
+<p>Choose "Layer" &rarr; "Create Layer" &rarr; "New Shapefile Layer ...". Click on the 3 dots to a choose file name and appropriate path (just typing a file name in the box left of the 3 dots puts the file in the default (and probably wrong) folder). Choose: "Geometry Type" $=$ "Polygon", "Coordinate system" = "EPSG:27700 -OSGB36 / British National Grid" (or equivalent if working dealing with area outside UK). Leave all other parameters blank or default, and click "OK"</p>
 </li>
 <li>
 <p>Now a new layer is created, visible in the Layer window, together with the map: click on the layer to highlight it.</p>
@@ -258,7 +258,7 @@
 <p>Create a QGIS layer with depth points:</p>
 <ol>
 <li>
-<p>Choose "Layer" $\rightarrow$ "Create Layer" $\rightarrow$ "New Shapefile Layer"</p>
+<p>Choose "Layer" &rarr; "Create Layer" &rarr; "New Shapefile Layer"</p>
 </li>
 <li>
 <p>Choose a file name for the 3-D layer (make sure to choose the correct folder!)</p>
@@ -306,13 +306,13 @@
 </ol>
 </li>
 <li>
-<p>Open the "Processing Toolbox" if not already open ("Processing" $\rightarrow$ "Toolbox")</p>
+<p>Open the "Processing Toolbox" if not already open ("Processing" &rarr; "Toolbox")</p>
 <ol>
 <li>
 <p>Type "IDW interpolation" in the Search box</p>
 </li>
 <li>
-<p>Choose "Interpolation $\rightarrow$ "IDW Interpolation". This will open a new window. N.B. this will use IDW $=$ Inverse-Distance-Weighting", which creates a smooth layer. If you prefer linear interpolation, there is another interpolation type called "TIN Interpolation". This option is not discussed here, but works very similar to IDW interpolation.</p>
+<p>Choose "Interpolation &rarr; "IDW Interpolation". This will open a new window. N.B. this will use IDW $=$ Inverse-Distance-Weighting", which creates a smooth layer. If you prefer linear interpolation, there is another interpolation type called "TIN Interpolation". This option is not discussed here, but works very similar to IDW interpolation.</p>
 </li>
 <li>
 <p>Choose "Vector Layer" $=$ your point layer that you’ve just created</p>
@@ -360,7 +360,7 @@
 <p>Save the changes when ready.</p>
 </li>
 <li>
-<p>In QGIS, Open the Python Console in "Plugins" $\rightarrow$ "Python console". This should open the console below your map.</p>
+<p>In QGIS, Open the Python Console in "Plugins" &rarr; "Python console". This should open the console below your map.</p>
 </li>
 <li>
 <p>Inside the console, click the "Show Editor" icon (lined paper-with-pencil icon).</p>
