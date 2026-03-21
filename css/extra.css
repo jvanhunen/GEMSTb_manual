@@ -1,7 +1,6 @@
 html {
   font-size: 14px;
 }
-
 .inline-img {
     width: 200px;       /* desired width */
     height: auto;       /* preserves aspect ratio */
