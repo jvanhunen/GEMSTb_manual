@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Installation - GEMSTb manual</title>
+    <title>Viewing Output - GEMSTb manual</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,8 +13,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Installation";
-        var mkdocs_page_input_path = "installation.md";
+        var mkdocs_page_name = "Viewing Output";
+        var mkdocs_page_input_path = "view.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -52,14 +52,8 @@
                 <li class="toctree-l1"><a class="reference internal" href="../software/">Required Software</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">Installation</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#installation-of-gemstoolbox">Installation of GEMSToolbox</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#running-a-test-model">Running a test model</a>
-    </li>
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
                 </li>
               </ul>
               <ul>
@@ -70,8 +64,10 @@
                 <li class="toctree-l1"><a class="reference internal" href="../QGIS_discr/">Mine Plan Discretisation using QGIS</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../view/">Viewing Output</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Viewing Output</a>
+    <ul class="current">
+    </ul>
                 </li>
               </ul>
               <ul>
@@ -96,7 +92,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Installation</li>
+      <li class="breadcrumb-item active">Viewing Output</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -105,95 +101,59 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="installing-and-running-the-gemstoolbox-software">Installing and running the GEMSToolbox software</h1>
-<p>The GEMSToolbox is designed to import a custom digitised map and test the feasibility of this mine system for mine water geothermal energy purposes. This is all described further down in this manual. This section describes how to install the GEMSToolbox software and test that it runs normally on your computer.</p>
-<h2 id="installation-of-gemstoolbox">Installation of GEMSToolbox</h2>
+                <h1 id="view-outputs">View outputs</h1>
+<p>The outputs of each Scenario input file are saved in the <code>outputs/[scenario_filename]</code> folder. The outputs consist of:</p>
+<ul>
+<li>
+<p>A <code>.vtk</code> file for each of the runs in that scenario named: <code>[scenario_filename]_[tag]_[runindex]</code></p>
+</li>
+<li>
+<p>A <code>.csv</code> file which records the relative temperature of each outflow node in each run. The relative temperature $T_r$ is given by $T_r = T_{out}/\Delta T$, where $\Delta T = |T_{r,max} - T_{w,min}|$, i.e. the difference between maximum rock temperature and minimum water temperature.</p>
+</li>
+</ul>
+<p>The <code>.vtk</code> file contains all the output information as set in the input file, and these can be viewed using Paraview. Here are a few basic steps to create a plot to view the results.</p>
 <ol>
 <li>
-<p>Downloading GEMSToolbox You should have received a <code>.zip</code> file of the code. Please contact jeroen.van-hunen@durham.ac.uk if this is not the case. Unzip the GEMSToolbox zip file into a suitable folder on your computer. We’ll call this folder <code>&lt;homeGEMSTb&gt;</code> from now on.</p>
+<p>Open Paraview</p>
 </li>
 <li>
-<p>Install GEMSToolbox Python environment</p>
-<ul>
-<li>
-<p>By conda:</p>
+<p>Click on the folder icon <img src="media/figures/folder_icon.png" alt="image" /> in the top-left corner, and navigate to the <code>.vtk</code> file, press ’OK’.</p>
 </li>
 <li>
-<p>Navigate to the GEMS directory. Then run:</p>
-<ul>
-<li><code>conda env create -f config/GEMS.base.yml</code></li>
-</ul>
+<p>click ’Apply’. You should now be able to view the temperature solution.</p>
 </li>
 <li>
-<p>Activate GEMS enviroment:</p>
-<ul>
-<li><code>conda activate GEMS</code></li>
-</ul>
+<p>To view a different parameter (e.g. water velocity or hydraulic head), choose a different parameter from the drop-down menu on the second row that now states "T(C)".</p>
 </li>
 <li>
-<p>By python venv:</p>
+<p>To re-scale the colour bar to the full range of values, use the <img src="media/figures/double-arrow_icon.png" alt="image" /> icon.</p>
 </li>
 <li>
-<p>In terminal or Windows CMD, to create GEMS venv, run:</p>
-<ul>
-<li><code>python -m venv GEMS</code></li>
-</ul>
+<p>To change the line width of the galleries, click to highlight the v̇tk file in the "Pipeline Browser" panel at the top-left, and then, in the "Properties" panel at the bottom-left scroll down to "Line Width".</p>
 </li>
 <li>
-<p>Activate GEMS venv:</p>
-<ul>
-<li>
-<p>On Windows: <code>GEMS</code>$\backslash$<code>Scripts</code>$\backslash$<code>activate</code></p>
+<p>To get information about a specific node in the network, click the <span class="image placeholder" original-image-src="figures/dot?_icon.png" original-image-title="" height="\baselineskip">image</span> icon, and click ’OK’. Now zoom in onto the area of interest, and hover the mouse over a node to see the available information.</p>
 </li>
 <li>
-<p>On MacOS and Linux: <code>source GEMS/bin/activate</code></p>
-</li>
-</ul>
+<p>There are a lot of options to customise the plot further. One handy option in Paraview is that you can save the customised view as a ’state’, and then load it back in later on, for the same or for a different data set. To do that, choose ’File’ $\Rightarrow$ ’Save State...’, which saves the state as a <code>.pvsm</code> file. Next time you use Paraview, you can use the same state by, instead of using the <img src="media/figures/folder_icon.png" alt="image" /> icon to load a <code>.vtk</code> file, use ’File’ $\Rightarrow$ ’Load State...’, and choose the previously saved <code>.pvsm</code> file. In the ’Load State Data File’ option, choose ’Choose File Names’, and choose the <code>.vtk</code> file to display, then press ’OK’. The <code>outputs</code> folder in the GEMSToolbox code already contains a <code>.pvsm</code> file to get started.</p>
 </li>
 <li>
-<p>Install required packages:</p>
-<ul>
-<li>
-<p>Check if <code>pip</code> is installed on your machine:<br />
-<code>pip –version</code> should return info on pip. If not, install it using<br />
-<code>python get-pip.py</code></p>
+<p>Change the background colour, find the ’Background’ section in ’Properties’, untick ’Use Color Palette For Background’, click background button to choose suitable colour (Figure <a href="#fig:background" data-reference-type="ref" data-reference="fig:background">5</a>).</p>
+<p><figure id="fig:background">
+<img src="media/figures/backgroundcolor.png" />
+<figcaption>Change the background colour</figcaption>
+</figure></p>
 </li>
 <li>
-<p><code>pip install –upgrade pip</code></p>
-</li>
-<li>
-<p><code>pip install pytest pandas geopandas meshio scipy openpyxl tqdm numba pyyaml gmsh</code></p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="running-a-test-model">Running a test model</h2>
-<p>To check if the code is installed and running properly, you can run one of the pre-installed models:</p>
-<ol>
-<li>
-<p>Navigate to <code>&lt;homeGEMSTb&gt;</code>, which is the root directory of GEMSToolbox codebase.</p>
-</li>
-<li>
-<p>On the command line, run the following line: <code>python GEMSTb.py &lt;model&gt;.xlsx</code><br />
-    where <code>&lt;model&gt;.xlsx</code> is one of the model xlsx input files located in the <code>&lt;homeGEMSTb&gt;/data</code> folder. For example, if the input file is <code>testmineplan.xlsx</code>, located in the <code>data</code> folder, then run the following command:<br />
-<code>python GEMSTb.py data/testmineplan.xlsx</code> (MacOS or Linux) or<br />
-<code>python GEMSTb.py data\testmineplan.xlsx</code> (Windows)</p>
-</li>
-<li>
-<p>If the code is correctly installed, this model should run in less than a minute, ending with the message: <code>GEMSToolbox completed successfully in X minutes.</code></p>
-</li>
-<li>
-<p>To view the results of this calculation, please refer to Section <a href="#sec:view outputs" data-reference-type="ref" data-reference="sec:view outputs">9</a>.</p>
+<p>Change title/text font colour. When the background colour is changed, the legend title/text font colour might also need to be changed. Click ’edit colour map’ <img src="media/figures/color icon.png" alt="image" /> to open colour map editor. Then click ’Edit colour legend properties’ button <img src="media/figures/legend colour.png" alt="image" /> to open ’Edit Colour Legend Properties’, choose the suitable colour for legend title and text.</p>
 </li>
 </ol>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../software/" class="btn btn-neutral float-left" title="Required Software"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../ArcGIS_discr/" class="btn btn-neutral float-right" title="Mine Plan Discretisation using ArcGIS">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../QGIS_discr/" class="btn btn-neutral float-left" title="Mine Plan Discretisation using QGIS"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../glossary/" class="btn btn-neutral float-right" title="Glossary">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -216,10 +176,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../software/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../QGIS_discr/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../ArcGIS_discr/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../glossary/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

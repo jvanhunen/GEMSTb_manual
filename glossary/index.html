@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Glossary - GEMSTb manual</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Glossary";
+        var mkdocs_page_input_path = "glossary.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> GEMSTb manual
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../summary/">Summary</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contact_points/">Contact points</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../software/">Required Software</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ArcGIS_discr/">Mine Plan Discretisation using ArcGIS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../QGIS_discr/">Mine Plan Discretisation using QGIS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../view/">Viewing Output</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Glossary</a>
+    <ul class="current">
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">GEMSTb manual</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Glossary</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="input-keyword-glossary">Input Keyword Glossary</h1>
+<p>This section describes the properties that can be set in the input file. Any property not set up in the input file will be read from the <code>config/default_params.yml</code> file. The format of the parameters in the Excel input file is such that only numbers, strings, space, commas (,), and square brackets ([ ]) are allowed in the input Excel file. 2D arrays can be inputted as [1 2] [3 4] or [[1,2], [3,4]]. Formatting using other symbols like [1 2 ; 3 4] or 1 2 ; 3 4 is not allowed.</p>
+<ul>
+<li>
+<p><strong>a</strong> (0.5): the damping oscillation factor applied to the flow at iteration n-1.</p>
+</li>
+<li>
+<p><strong>ArcGIS_file_name</strong> (no default): the path to the shapefiles to be used to generate the geometry with <code>step_load_GIS_geometry</code>. The format is <code>[&lt;directoryPath&gt;/&lt;fileName1&gt;.shp, &lt;directoryPath&gt;/&lt;fileNameN&gt;.shp]</code>.</p>
+</li>
+<li>
+<p><strong>b</strong> (0.5): the damping oscillation factor applied to the flow at iteration n.</p>
+</li>
+<li>
+<p><strong>connections</strong> ([ ]): list of node ID doublets to create connecting pipes (e.g. to connect different seams)</p>
+</li>
+<li>
+<p><strong>Cp_f</strong> (4186 J/K/kg) specific heat capacity of the mine water</p>
+</li>
+<li>
+<p><strong>Cp_r</strong> (960 J/K/kg) specific heat capacity of the rocks</p>
+</li>
+<li>
+<p><strong>d_set</strong> (2.25 m) diameter of the mine galleries</p>
+</li>
+<li>
+<p><strong>eps</strong> (0.1 m): mine gallery roughness parameter</p>
+</li>
+<li>
+<p><strong>fixed_head_node</strong> ([[2, 0.0]]): node nr where hydraulic head is fixed</p>
+</li>
+<li>
+<p><strong>flow_error_threshold</strong> ($1.0 \times 10^{-15}$): numerical accuracy of the flow solver</p>
+</li>
+<li>
+<p><strong>gis_overrides</strong> ( ): parameters to be overriden using the value found in the GIS files.</p>
+</li>
+<li>
+<p><strong>grid_height</strong> (3): nr of grid points in y-direction (used for structured grids only)</p>
+</li>
+<li>
+<p><strong>grid_width</strong> (3): nr of grid points in x-direction (used for structured grids only)</p>
+</li>
+<li>
+<p><strong>gw_darcy_velocity</strong> (0 m/s): Darcy velocity of the regional groundwater into the mine.</p>
+</li>
+<li>
+<p><strong>h_pipe_length</strong> (50 m): x-length of each gallery segment (used for structured grids only)</p>
+</li>
+<li>
+<p><strong>Hydraulic_conductivity</strong> (0.03 m/s): Hydraulic conductivity of porous zones (goaf and collapsed/backfilled galleries)</p>
+</li>
+<li>
+<p><strong>igeom</strong> (<code>step load_GIS_geometry</code>): specifies the geometrical function file to be used by the code. Two options are available: 1) <code>step load_GIS_geometry</code> (will read structure from GIS shapefile), and 2) <code>step_grid_geometry</code> (will generate uniform grid )</p>
+</li>
+<li>
+<p><strong>int_d</strong> (1000): nr points to evaluate the thermal interference between galleries</p>
+</li>
+<li>
+<p><strong>k_f</strong> (0.58 W/m,K): fluid thermal conductivity</p>
+</li>
+<li>
+<p><strong>k_r</strong> (2.6 W/m,K): rock thermal conductivity</p>
+</li>
+<li>
+<p><strong>mat_d_prop</strong> ([5.0] m: array to set different diameter to specific pipes specified with <code>mat pipe_ids</code></p>
+</li>
+<li>
+<p><strong>mat_K_prop</strong> ([0.03] m/s: array to set different hydraulic conductivities to specific pipes specified with <code>mat pipe_ids</code></p>
+</li>
+<li>
+<p><strong>mat_pipe_ids</strong> ([ ]): array to pipe IDs for which non-default diameter or hydraulic conductivity values apply. See also parameters mat_d_prop and mat_K_prop.</p>
+</li>
+<li>
+<p><strong>mat_prop_case</strong> (1): the switch case code used to apply the material properties to the model (currently porosity and hydraulic conductivity). 1: sets porosity to 1 for all pipes (i.e. all pipes are considered open). 2: sets all the pipes to the porosity and hydraulic conductivity specified in the <strong>porosity</strong> and <strong>Hydraulic_conductivity</strong> input keywords respectively. 3: uses a Perlin Noise map to set the porosity values of the pipes, and beyond a certain threshold (specified in <strong>open_th</strong> keyword) all the pipes are considered open with a porosity of 1. The value specified in the <strong>Hydraulic_conductivity</strong> input keyword is used as the hydraulic conductivity in all pipes. 4: like 3, but around a radius specified by the <strong>well_exclusion_th</strong> input keyword, where all pipes are considered open. 5: like 4 but instead of forcing open pipes around the wells, we force porous pipes.</p>
+</li>
+<li>
+<p><strong>max_sim_time</strong> (20 yrs): the maximum time it should take for water to reach the end of any given pipe. Beyond which the outflow temperature of a pipe will be considered to be that of the initial rock temperature.</p>
+</li>
+<li>
+<p><strong>mesh_density</strong> (100 m): The maximum mesh size the model will try to achieve in 2D porous goaf areas.</p>
+</li>
+<li>
+<p><strong>n_steps</strong> (10): the number of steps it takes the water to flow through a pipe.</p>
+</li>
+<li>
+<p><strong>no_seams</strong> (1): number of seams for scenario of regular structured grids (if igeom $==$ step load_GIS_geometry)</p>
+</li>
+<li>
+<p><strong>node_outputs</strong> (Tn T(C), head Head(m), tt_n transit_times(yrs), wells Well_positions, n_tree_idx, Tree_pos, node_id node_id]): specifies the desired nodal outputs to be saved in the vtk file for each run. List of valid node outputs:</p>
+</li>
+<li>
+<p>node_id: the id of the node found in the underlying GIS files or/and ID to be used to set inflow, outflow, or fixed head nodes.</p>
+</li>
+<li>
+<p>Tn: the nodal temperatures of the model.</p>
+</li>
+<li>
+<p>head: the nodal hydraulic heads of the model.</p>
+</li>
+<li>
+<p>tt_n: the time it takes water to flow from the closest net inflow point to this node.</p>
+</li>
+<li>
+<p>wells: indicates the inflow (1), outflow (-1) and fixed head (0) nodes. All other nodes have a NaN value.</p>
+</li>
+<li>
+<p>n_tree: the position of nodes in the tree used to sequentially solve the heat transfer.</p>
+</li>
+<li>
+<p><strong>nu_f</strong> (1.2e-06 Pa s): dynamic viscosity of the mine water.</p>
+</li>
+<li>
+<p><strong>nyrs</strong> (3 yrs): the number of simulation years is to be run for.</p>
+</li>
+<li>
+<p><strong>open_th</strong> (0.5): threshold value of (random) porosity above which a pipe is considered ’open’. Applies to the cases where mat_prop_case $&gt;$ 1.</p>
+</li>
+<li>
+<p><strong>pipe_outputs</strong> ([pipe_id pipe_id, vs Water_velocity(m/s), Q_real Flow_rate(m3/s), poro_e Porosity($\mathrm{m^3/m^3}$), Re Re(-), d Pipe_diameters(m), alphas Alpha, rp R_0, dT_model Heat_Model_dT(C)]): specifies the desired pipe outputs to be saved as cell values in the vtk file for each run. List of valid pipe outputs:</p>
+</li>
+<li>
+<p>pipe_id: the id of the pipes as held within the GEMS toolbox.</p>
+</li>
+<li>
+<p>Re: the Reynolds number.</p>
+</li>
+<li>
+<p>v: the water velocity inside the pipe (m/s) assumed uniform.</p>
+</li>
+<li>
+<p>Qv: the vectorised flow rate through the pipes (m$^3$/s). Saved as a vector in VTK with an x, y and z component.</p>
+</li>
+<li>
+<p>Q: the absolute flow rate through the pipes. Is equal to the magnitude of Qv.</p>
+</li>
+<li>
+<p>poro: the porosity of each pipe.</p>
+</li>
+<li>
+<p>rp: the radial distance of the thermal front inside an infinite homogeneous porous rock.</p>
+</li>
+<li>
+<p>Tp: a vectorised value holding two components labelled x and y. x corresponding to the inflow temperature of the pipe and y to its outflow temperature.</p>
+</li>
+<li>
+<p>pmod: indicates which case of the statement is used in the heat calculation code.</p>
+</li>
+<li>
+<p>Qdiff: the flow difference in the pipe between the last and penultimate iteration in the flow computation.</p>
+</li>
+<li>
+<p>K: hydraulic conductivity.</p>
+</li>
+<li>
+<p>d: pipe diameter.</p>
+</li>
+<li>
+<p><strong>Porosity</strong> (0.3): the porosity of the any backfilled or collapsed pipes.</p>
+</li>
+<li>
+<p><strong>q_in</strong> ([1]): array of injection node ID(s).</p>
+</li>
+<li>
+<p><strong>q_out</strong> ([3]): array of abstraction node ID(s).</p>
+</li>
+<li>
+<p><strong>qset</strong> ([0.01] $\mathrm{m^3/s}$): the flow rate in/out of each injection and abstraction wells</p>
+</li>
+<li>
+<p><strong>Qth_tree</strong> (1.0e-07): the cut-off value for the flow comparison check used when disregarding a node for the computation of the flow tree required for the sequential heat calculations. This might need adjusting if porous pipes sections of the models are not added to the tree.</p>
+</li>
+<li>
+<p><strong>rho_f</strong> (1000 $\mathrm{kg/m^3}$): density of the mine water.</p>
+</li>
+<li>
+<p><strong>rho_r</strong> (2400 $\mathrm{kg/m^3}$): density of the rock mass surrounding the mine.</p>
+</li>
+<li>
+<p><strong>rng_seed</strong> (1): random number generatore seed used for random porosity models (when mat_prop_case $&gt;$ 1)</p>
+</li>
+<li>
+<p><strong>seam_spacing</strong> (100 m): spacing of seams in regular grid models (when igeom $==$ step_grid_geometry)</p>
+</li>
+<li>
+<p><strong>Tag</strong> ( ): allows you to specify a tag that will be added to the output .vtk filename.</p>
+</li>
+<li>
+<p><strong>Tf_ini</strong> ([3] $\mathrm{{}^o}C$): array of the same length as for parameter q_in with water injection temperature(s).</p>
+</li>
+<li>
+<p><strong>Tr</strong> ([-0.032, 8.8] $\mathrm{{}^o}C/m$, $\mathrm{{}^o}C$): Rock temperature definition: first parameter is the vertical gradient, while the 2nd value is the rock temperature at the surface.</p>
+</li>
+<li>
+<p><strong>v_pipe_length</strong> (50 m): y-length of each gallery segment (used for structured grids only)</p>
+</li>
+<li>
+<p><strong>well_exclusion_th</strong> (30 m): avoid porous zones within well_exclusion_th from the injection or abstraction wells.</p>
+</li>
+</ul>
+<h1 id="adding-additional-parameters">Adding additional parameters</h1>
+<p>To compute some of your inputs you might want to perform intermediate calculations based on some additional parameters. To do this you can simply add another parameter, give it a name in the first column, with no spaces, and populate ALL the columns where a scenario is already defined. You can then use this parameter with Excel’s inbuilt capabilities to compute your desired parameters. This should enable you to keep track of all the parameters used to obtain your inputs in the same file. Note that, ’loose’ numbers in other parts of the spreadsheet will cause errors.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../view/" class="btn btn-neutral float-left" title="Viewing Output"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../troubleshooting/" class="btn btn-neutral float-right" title="Troubleshooting">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../view/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../troubleshooting/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

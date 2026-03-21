@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Installation - GEMSTb manual</title>
+    <title>Troubleshooting - GEMSTb manual</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,8 +13,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Installation";
-        var mkdocs_page_input_path = "installation.md";
+        var mkdocs_page_name = "Troubleshooting";
+        var mkdocs_page_input_path = "troubleshooting.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -52,14 +52,8 @@
                 <li class="toctree-l1"><a class="reference internal" href="../software/">Required Software</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">Installation</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#installation-of-gemstoolbox">Installation of GEMSToolbox</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#running-a-test-model">Running a test model</a>
-    </li>
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
                 </li>
               </ul>
               <ul>
@@ -78,8 +72,16 @@
                 <li class="toctree-l1"><a class="reference internal" href="../glossary/">Glossary</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Troubleshooting</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#arcgis-common-problems">ArcGIS common problems</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#gemstoolbox-common-problems-and-errors">GEMSToolbox common problems and errors</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#paraview-common-problems">Paraview common problems</a>
+    </li>
+    </ul>
                 </li>
               </ul>
       </div>
@@ -96,7 +98,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Installation</li>
+      <li class="breadcrumb-item active">Troubleshooting</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -105,95 +107,28 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="installing-and-running-the-gemstoolbox-software">Installing and running the GEMSToolbox software</h1>
-<p>The GEMSToolbox is designed to import a custom digitised map and test the feasibility of this mine system for mine water geothermal energy purposes. This is all described further down in this manual. This section describes how to install the GEMSToolbox software and test that it runs normally on your computer.</p>
-<h2 id="installation-of-gemstoolbox">Installation of GEMSToolbox</h2>
-<ol>
-<li>
-<p>Downloading GEMSToolbox You should have received a <code>.zip</code> file of the code. Please contact jeroen.van-hunen@durham.ac.uk if this is not the case. Unzip the GEMSToolbox zip file into a suitable folder on your computer. We’ll call this folder <code>&lt;homeGEMSTb&gt;</code> from now on.</p>
-</li>
-<li>
-<p>Install GEMSToolbox Python environment</p>
+                <h1 id="troubleshooting">Troubleshooting</h1>
+<h2 id="arcgis-common-problems">ArcGIS common problems</h2>
+<h2 id="gemstoolbox-common-problems-and-errors">GEMSToolbox common problems and errors</h2>
 <ul>
 <li>
-<p>By conda:</p>
+<p><strong>Gmsh configuration:</strong> GEMSToolbox makes use of a meshing software Gmsh by calling Gmsh Python API. However, incorrect Gmsh configurations can occasionally result in errors. To ensure proper functionality, install Gmsh using the pip package manager command “<strong><code>pip install gmsh</code></strong>” rather than the Conda command <code>conda install gmsh</code>. If the problem persists, you can download the standalone Gmsh executable directly from the official website: <a href="https://gmsh.info/#Download">https://gmsh.info/#Download</a>. Then run “<code>python GEMSTb.py &lt;model&gt;.xlsx &lt;gmsh-path&gt;</code>”, where refers to the path of the Gmsh executable. For example on Windows: <strong><code>python GEMSTb.py .\data\testmineplan.xlsx D:\gmsh-4.13.1-Windows64\gmsh</code></strong>. GEMSToolbox will call the external Gmsh excutable.</p>
 </li>
 <li>
-<p>Navigate to the GEMS directory. Then run:</p>
+<p>GEMSToolbox versions from May 2025 or older were using an input file with a different format (using a horizontal rather than vertical layout). If you have ’old’ input files that you would like to run with the latest version of GEMSToolbox, you can convert the input file to the new format using the Python script <code>convert_input_xlsx.py</code>. To run the script:<br />
+<code>python convert_input_xlsx.py &lt;old_scenario_file&gt;</code><br />
+  This will create a new input file in the folder where this script is run with <code>_transposed</code> in its file name. If needed, you can then rename this new parameter file and/or move it to the desired folder.</p>
+</li>
+</ul>
+<h2 id="paraview-common-problems">Paraview common problems</h2>
 <ul>
-<li><code>conda env create -f config/GEMS.base.yml</code></li>
+<li><strong>Line width of cell attributes:</strong> On MacOS systems, lines don’t render correctly if the Line Width is larger than $1.0$. The problem is discussed in <a href="https://discourse.paraview.org/t/cell-values-partly-disappear-when-editing-width-on-mac/11666">this forum post</a>. A partial work-around is to convert the lines (i.e. cell data) into interpolated points (i.e. point data). To do this, click on the data set in the Pipeline Browser’ which contains the line data. Then choose the ’Filters’ tab, then ’Alphabetically’, and then ’Cell Data to Point Data’. Choose your line data to plot, and you should be able to use larger Line Widths now. The difference is that the original line data has uniform line values, whereas the derived ’Cell Data to Point Data’ dataset interpolates between the points on either end of the line. So for rapidly changing values, it might not be what you want.</li>
 </ul>
-</li>
-<li>
-<p>Activate GEMS enviroment:</p>
-<ul>
-<li><code>conda activate GEMS</code></li>
-</ul>
-</li>
-<li>
-<p>By python venv:</p>
-</li>
-<li>
-<p>In terminal or Windows CMD, to create GEMS venv, run:</p>
-<ul>
-<li><code>python -m venv GEMS</code></li>
-</ul>
-</li>
-<li>
-<p>Activate GEMS venv:</p>
-<ul>
-<li>
-<p>On Windows: <code>GEMS</code>$\backslash$<code>Scripts</code>$\backslash$<code>activate</code></p>
-</li>
-<li>
-<p>On MacOS and Linux: <code>source GEMS/bin/activate</code></p>
-</li>
-</ul>
-</li>
-<li>
-<p>Install required packages:</p>
-<ul>
-<li>
-<p>Check if <code>pip</code> is installed on your machine:<br />
-<code>pip –version</code> should return info on pip. If not, install it using<br />
-<code>python get-pip.py</code></p>
-</li>
-<li>
-<p><code>pip install –upgrade pip</code></p>
-</li>
-<li>
-<p><code>pip install pytest pandas geopandas meshio scipy openpyxl tqdm numba pyyaml gmsh</code></p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="running-a-test-model">Running a test model</h2>
-<p>To check if the code is installed and running properly, you can run one of the pre-installed models:</p>
-<ol>
-<li>
-<p>Navigate to <code>&lt;homeGEMSTb&gt;</code>, which is the root directory of GEMSToolbox codebase.</p>
-</li>
-<li>
-<p>On the command line, run the following line: <code>python GEMSTb.py &lt;model&gt;.xlsx</code><br />
-    where <code>&lt;model&gt;.xlsx</code> is one of the model xlsx input files located in the <code>&lt;homeGEMSTb&gt;/data</code> folder. For example, if the input file is <code>testmineplan.xlsx</code>, located in the <code>data</code> folder, then run the following command:<br />
-<code>python GEMSTb.py data/testmineplan.xlsx</code> (MacOS or Linux) or<br />
-<code>python GEMSTb.py data\testmineplan.xlsx</code> (Windows)</p>
-</li>
-<li>
-<p>If the code is correctly installed, this model should run in less than a minute, ending with the message: <code>GEMSToolbox completed successfully in X minutes.</code></p>
-</li>
-<li>
-<p>To view the results of this calculation, please refer to Section <a href="#sec:view outputs" data-reference-type="ref" data-reference="sec:view outputs">9</a>.</p>
-</li>
-</ol>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../software/" class="btn btn-neutral float-left" title="Required Software"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../ArcGIS_discr/" class="btn btn-neutral float-right" title="Mine Plan Discretisation using ArcGIS">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../glossary/" class="btn btn-neutral float-left" title="Glossary"><span class="icon icon-circle-arrow-left"></span> Previous</a>
     </div>
 
   <hr/>
@@ -216,10 +151,8 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../software/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../glossary/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
-    
-      <span><a href="../ArcGIS_discr/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

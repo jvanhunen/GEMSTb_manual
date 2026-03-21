@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Installation - GEMSTb manual</title>
+    <title>Required Software - GEMSTb manual</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,8 +13,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Installation";
-        var mkdocs_page_input_path = "installation.md";
+        var mkdocs_page_name = "Required Software";
+        var mkdocs_page_input_path = "software.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -48,18 +48,26 @@
                 <li class="toctree-l1"><a class="reference internal" href="../contact_points/">Contact points</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../software/">Required Software</a>
-                </li>
-              </ul>
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">Installation</a>
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Required Software</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#installation-of-gemstoolbox">Installation of GEMSToolbox</a>
+    <li class="toctree-l2"><a class="reference internal" href="#arcgis-pro-or-qgis">ArcGIS Pro or QGIS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#arcgis-pro">ArcGIS Pro</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#running-a-test-model">Running a test model</a>
+    <li class="toctree-l3"><a class="reference internal" href="#qgis">QGIS</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#python">Python</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#paraview">Paraview</a>
     </li>
     </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
                 </li>
               </ul>
               <ul>
@@ -96,7 +104,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Installation</li>
+      <li class="breadcrumb-item active">Required Software</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -105,95 +113,38 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="installing-and-running-the-gemstoolbox-software">Installing and running the GEMSToolbox software</h1>
-<p>The GEMSToolbox is designed to import a custom digitised map and test the feasibility of this mine system for mine water geothermal energy purposes. This is all described further down in this manual. This section describes how to install the GEMSToolbox software and test that it runs normally on your computer.</p>
-<h2 id="installation-of-gemstoolbox">Installation of GEMSToolbox</h2>
-<ol>
-<li>
-<p>Downloading GEMSToolbox You should have received a <code>.zip</code> file of the code. Please contact jeroen.van-hunen@durham.ac.uk if this is not the case. Unzip the GEMSToolbox zip file into a suitable folder on your computer. We’ll call this folder <code>&lt;homeGEMSTb&gt;</code> from now on.</p>
-</li>
-<li>
-<p>Install GEMSToolbox Python environment</p>
+                <h1 id="required-software-tools">Required software tools</h1>
+<h2 id="arcgis-pro-or-qgis">ArcGIS Pro or QGIS</h2>
+<p>Mine plan digitisation is done using GIS software. At the moment, tools are available for ArcGIS Pro or QGIS.</p>
+<h3 id="arcgis-pro">ArcGIS Pro</h3>
+<p>For staff/students of Durham University, ArcGIS Pro is available through <a href="https://appsanywhere.durham.ac.uk/login">https://appsanywhere.durham.ac.uk/login</a>, either in one of the computer rooms on the university campus, or on your own computer. Type your CIS username and password, and log in. An ’Open Appsanywhere’ pop-up window might appear, which you should agree to. If you are running Appsanywhere for the first time, you may be guided to install it first on your machine. In the search box, search for the latest version of <code>ArcGIS Pro</code> (version 3.0 at the time of writing), and click on <code>Launch Remote</code>. A ’Parallels Client’ remote window will open, which contains ArcGIS Pro.</p>
+<p>ArcGIS Pro can also be directly downloaded, and, after creating an account as explained <a href="https://durhamuni.maps.arcgis.com/home/index.html">here</a>, can be run on your own computer, but only if your computer runs a MS Windows operating system.</p>
+<h3 id="qgis">QGIS</h3>
+<p>To install the latest stable version, the user is referred to <a href="https://docs.qgis.org/3.34/en/docs/user_manual">the QGIS website</a>, Section 5.1.</p>
+<h2 id="python">Python</h2>
+<p>This code requires Python 3, with Python 3.12 or 3.13 being recommended.</p>
+<p>You can set up your environment using either Python’s built-in venv module or Conda. For Python installation, visit the official Python website at <a href="https://python.org/downloads">https://python.org/downloads</a>.</p>
+<p>If you prefer Conda, you can download and install it from <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/">https://docs.conda.io/projects/conda/en/latest/user-guide/install/</a>. The required package list is located in the directory <code>config/GEMS.base.yml</code>. Instructions for package installation will be provided in a later section.</p>
+<p>To check if the installation was done correctly, do the following:</p>
 <ul>
 <li>
-<p>By conda:</p>
+<p>Open a terminal</p>
 </li>
 <li>
-<p>Navigate to the GEMS directory. Then run:</p>
-<ul>
-<li><code>conda env create -f config/GEMS.base.yml</code></li>
-</ul>
-</li>
-<li>
-<p>Activate GEMS enviroment:</p>
-<ul>
-<li><code>conda activate GEMS</code></li>
-</ul>
-</li>
-<li>
-<p>By python venv:</p>
-</li>
-<li>
-<p>In terminal or Windows CMD, to create GEMS venv, run:</p>
-<ul>
-<li><code>python -m venv GEMS</code></li>
-</ul>
-</li>
-<li>
-<p>Activate GEMS venv:</p>
-<ul>
-<li>
-<p>On Windows: <code>GEMS</code>$\backslash$<code>Scripts</code>$\backslash$<code>activate</code></p>
-</li>
-<li>
-<p>On MacOS and Linux: <code>source GEMS/bin/activate</code></p>
+<p>Type:<br />
+<code>which python</code> (MacOS or Linux)<br />
+<code>where python</code> (Windows)</p>
 </li>
 </ul>
-</li>
-<li>
-<p>Install required packages:</p>
-<ul>
-<li>
-<p>Check if <code>pip</code> is installed on your machine:<br />
-<code>pip –version</code> should return info on pip. If not, install it using<br />
-<code>python get-pip.py</code></p>
-</li>
-<li>
-<p><code>pip install –upgrade pip</code></p>
-</li>
-<li>
-<p><code>pip install pytest pandas geopandas meshio scipy openpyxl tqdm numba pyyaml gmsh</code></p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="running-a-test-model">Running a test model</h2>
-<p>To check if the code is installed and running properly, you can run one of the pre-installed models:</p>
-<ol>
-<li>
-<p>Navigate to <code>&lt;homeGEMSTb&gt;</code>, which is the root directory of GEMSToolbox codebase.</p>
-</li>
-<li>
-<p>On the command line, run the following line: <code>python GEMSTb.py &lt;model&gt;.xlsx</code><br />
-    where <code>&lt;model&gt;.xlsx</code> is one of the model xlsx input files located in the <code>&lt;homeGEMSTb&gt;/data</code> folder. For example, if the input file is <code>testmineplan.xlsx</code>, located in the <code>data</code> folder, then run the following command:<br />
-<code>python GEMSTb.py data/testmineplan.xlsx</code> (MacOS or Linux) or<br />
-<code>python GEMSTb.py data\testmineplan.xlsx</code> (Windows)</p>
-</li>
-<li>
-<p>If the code is correctly installed, this model should run in less than a minute, ending with the message: <code>GEMSToolbox completed successfully in X minutes.</code></p>
-</li>
-<li>
-<p>To view the results of this calculation, please refer to Section <a href="#sec:view outputs" data-reference-type="ref" data-reference="sec:view outputs">9</a>.</p>
-</li>
-</ol>
+<p>This should provide you with a full path for the Python executable.</p>
+<h2 id="paraview">Paraview</h2>
+<p>The visualisation software tool Paraview can be downloaded from <a href="https://www.paraview.org/download/">https://www.paraview.org/download/</a>. The Mac OS versions are all fairly stable, but the MS Windows versions not so much. If the latest version is not working properly, try installing an earlier version.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../software/" class="btn btn-neutral float-left" title="Required Software"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../ArcGIS_discr/" class="btn btn-neutral float-right" title="Mine Plan Discretisation using ArcGIS">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../contact_points/" class="btn btn-neutral float-left" title="Contact points"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../installation/" class="btn btn-neutral float-right" title="Installation">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -216,10 +167,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../software/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../contact_points/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../ArcGIS_discr/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../installation/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
