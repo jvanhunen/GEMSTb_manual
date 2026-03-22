@@ -79,6 +79,10 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../running_GEMSTb/">Running GEMSToolbox</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../view/">Viewing Output</a>
                 </li>
               </ul>
@@ -375,34 +379,12 @@
 </li>
 </ol>
 <p>The process of creating lines and polygons can be repeated if multiple mine workings are modelled together. Each worked seam then gets its own GEMSToolbox shapefile. But keep in mind that, if you create those different mine workings in the same QGIS folder, the files <code>QGIS_digitised_map.*</code> will need different names for the different seams.</p>
-<h1 id="running-gemstoolbox-with-the-newly-created-digitised-map">Running GEMSToolbox with the newly created digitised map</h1>
-<h2 id="creating-a-custom-input-file">Creating a custom input file</h2>
-<ol>
-<li>
-<p>Using the MacOS Finder or Windows Explorer navigate to <code>&lt;homeGEMSTb&gt;/data</code> then make a copy of the <code>Grid_demo.xlsx</code> or any of the templates provided.</p>
-</li>
-<li>
-<p>Rename the copy to anything you want, but keep the Excel <code>.xlsx</code> extension. For now we will call this <code>CustomScenario.xlsx</code></p>
-</li>
-<li>
-<p>Open your <code>CustomScenario</code> file in a spreadsheet editor. You can now customise any of the parameters as you wish using the information provided in the keyword glossary (Section <a href="#sec:glossary" data-reference-type="ref" data-reference="sec:glossary">10</a>) below. Note that if a parameter is not listed in the input file, the code will use its default value, as listed in Section <a href="#sec:glossary" data-reference-type="ref" data-reference="sec:glossary">10</a>.</p>
-</li>
-<li>
-<p>On the command line, move to the <code>&lt;homeGEMSTb&gt;</code> folder, and run the following command to start the calculation:<br />
-<code>python GEMSTb.py data/CustomScenario.xlsx</code></p>
-</li>
-<li>
-<p>If your input file contains multiple models (i.e. multiple columns), you can run the code in parallel:<br />
-<code>python GEMSTb.py data/CustomScenario.xlsx –num_workers N</code><br />
-    where <code>N</code> is the numbers of parallel threads you would like to use.</p>
-</li>
-</ol>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../ArcGIS_discr/" class="btn btn-neutral float-left" title="Mine Plan Discretisation using ArcGIS"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../view/" class="btn btn-neutral float-right" title="Viewing Output">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../running_GEMSTb/" class="btn btn-neutral float-right" title="Running GEMSToolbox">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -428,7 +410,7 @@
       <span><a href="../ArcGIS_discr/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../view/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../running_GEMSTb/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
