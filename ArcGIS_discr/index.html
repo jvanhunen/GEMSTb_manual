@@ -161,7 +161,7 @@
 <li>
 <p>Now add a few more connection points to account for any skewness of the mine plan. Figure <a href="#fig:georeferencing" data-reference-type="ref" data-reference="fig:georeferencing">1</a> shows an example of a georeferenced mine plan.</p>
 <p><figure id="fig:georeferencing">
-<img src="media/figures/georeferencing.png" />
+<img src="../figures/georeferencing.png" />
 <figcaption>Example of a georeferenced mine plan. The connection points used for georeferencing are illustrated as ’B’ on the map.</figcaption>
 </figure></p>
 </li>
@@ -304,9 +304,6 @@
 </li>
 <li>
 <p>This Python script might take a while to run, particularly if your digitised mine system is large. Once finished, it produces a number of files with the same base name, as listed in the Python window (typically <code>complete_set_feature_1</code>. The first copy of the file is saved into your ArcGIS project database, the second is located into your project directory to be easily accessed. Copy all the <code>complete_set_feature_1</code> files located into the project directory over to the <code>maps</code> folder of the GEMSToolbox (you may want to create a subfolder inside <code>maps</code> to keep the folder tidy). This completes the digitisation process in ArcGIS Pro.</p>
-</li>
-<li>
-<p>If you are confident all your connections between pipe lines and goaf polygons are perfectly done as the above steps without missing any connections between two nodes, you can run your model using GEMSToolbox smoothly. However, you might meet problems sometimes, especially when you run the model with complex goaf zones. If such, you need to adjust the parameters Qth and flow_error_threshold. Their default values are set to 1E-7 and 1E-15, respectively. In most cases, you can gradually increase Qth in Excel sheet to a a bit larger value, but better not greater than 1E-4. If the problem still can’t be solved, please contact yuxiao.wang2@durham.ac.uk.</p>
 </li>
 </ol>
               
