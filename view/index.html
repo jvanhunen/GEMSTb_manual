@@ -108,7 +108,7 @@
 <p>A <code>.vtk</code> file for each of the runs in that scenario named: <code>[scenario_filename]_[tag]_[runindex]</code></p>
 </li>
 <li>
-<p>A <code>.csv</code> file which records the relative temperature of each outflow node in each run. The relative temperature $T_r$ is given by $T_r = T_{out}/\Delta T$, where $\Delta T = |T_{r,max} - T_{w,min}|$, i.e. the difference between maximum rock temperature and minimum water temperature.</p>
+<p>A <code>.csv</code> file which records the relative temperature of each outflow node in each run. The relative temperature <span class="arithmatex">\(T_r\)</span> is given by <span class="arithmatex">\(T_r = T_{out}/\Delta T\)</span>, where <span class="arithmatex">\(\Delta T = |T_{r,max} - T_{w,min}|\)</span>, i.e. the difference between maximum rock temperature and minimum water temperature.</p>
 </li>
 </ul>
 <p>The <code>.vtk</code> file contains all the output information as set in the input file, and these can be viewed using Paraview. Here are a few basic steps to create a plot to view the results.</p>
@@ -135,7 +135,7 @@
 <p>To get information about a specific node in the network, click the <img src="i../figures/dot_icon.png" alt="image" width="5%"/>  icon, and click ’OK’. Now zoom in onto the area of interest, and hover the mouse over a node to see the available information.</p>
 </li>
 <li>
-<p>There are a lot of options to customise the plot further. One handy option in Paraview is that you can save the customised view as a ’state’, and then load it back in later on, for the same or for a different data set. To do that, choose ’File’ $\Rightarrow$ ’Save State...’, which saves the state as a <code>.pvsm</code> file. Next time you use Paraview, you can use the same state by, instead of using the <img src="media/figures/folder_icon.png" alt="image" /> icon to load a <code>.vtk</code> file, use ’File’ $\Rightarrow$ ’Load State...’, and choose the previously saved <code>.pvsm</code> file. In the ’Load State Data File’ option, choose ’Choose File Names’, and choose the <code>.vtk</code> file to display, then press ’OK’. The <code>outputs</code> folder in the GEMSToolbox code already contains a <code>.pvsm</code> file to get started.</p>
+<p>There are a lot of options to customise the plot further. One handy option in Paraview is that you can save the customised view as a ’state’, and then load it back in later on, for the same or for a different data set. To do that, choose ’File’ <span class="arithmatex">\(\Rightarrow\)</span> ’Save State...’, which saves the state as a <code>.pvsm</code> file. Next time you use Paraview, you can use the same state by, instead of using the <img src="media/figures/folder_icon.png" alt="image" /> icon to load a <code>.vtk</code> file, use ’File’ <span class="arithmatex">\(\Rightarrow\)</span> ’Load State...’, and choose the previously saved <code>.pvsm</code> file. In the ’Load State Data File’ option, choose ’Choose File Names’, and choose the <code>.vtk</code> file to display, then press ’OK’. The <code>outputs</code> folder in the GEMSToolbox code already contains a <code>.pvsm</code> file to get started.</p>
 </li>
 <li>
 <p>Change the background colour, find the ’Background’ section in ’Properties’, untick ’Use Color Palette For Background’, click background button to choose suitable colour (Figure <a href="#fig:background" data-reference-type="ref" data-reference="fig:background">5</a>).</p>
@@ -187,6 +187,7 @@
     <script>var base_url = "..";</script>
     <script src="../js/theme_extra.js"></script>
     <script src="../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       <script src="../search/main.js"></script>
     <script>
         jQuery(function () {

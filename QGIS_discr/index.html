@@ -203,7 +203,7 @@
 <p>To create a network of galleries:</p>
 <ol>
 <li>
-<p>Choose "Layer" &rarr; "Create Layer" &rarr; "New Shapefile Layer ...". Click on the 3 dots to choose a file name and appropriate path (just typing a file name in the box left of the 3 dots puts the file in the default (and probably wrong) folder). Choose: "Geometry Type" $=$ "LineString", "Coordinate system" = "EPSG:27700 -OSGB36 / British National Grid" (or equivalent if working dealing with an area outside the UK). Leave all other parameters blank or default, and click "OK"</p>
+<p>Choose "Layer" &rarr; "Create Layer" &rarr; "New Shapefile Layer ...". Click on the 3 dots to choose a file name and appropriate path (just typing a file name in the box left of the 3 dots puts the file in the default (and probably wrong) folder). Choose: "Geometry Type" <span class="arithmatex">\(=\)</span> "LineString", "Coordinate system" = "EPSG:27700 -OSGB36 / British National Grid" (or equivalent if working dealing with an area outside the UK). Leave all other parameters blank or default, and click "OK"</p>
 </li>
 <li>
 <p>Now a new layer is created, visible in the QGIS "Layers" window, together with the map: click on the layer to highlight it.</p>
@@ -212,7 +212,7 @@
 <p>Click on the pencil icon ("Toggle Editing") in the 2nd row, and then on the Line-with-Star icon ("Add Line Feature") to the right of it.</p>
 </li>
 <li>
-<p>Switch on the snapping tool: "Project" &rarr; "Snapping Options". A thin, wide window appears with all options: first box: snapping $=$ on (grey instead of white); third box: tick Vertex, Segment, Line Endpoints. Close the window.</p>
+<p>Switch on the snapping tool: "Project" &rarr; "Snapping Options". A thin, wide window appears with all options: first box: snapping <span class="arithmatex">\(=\)</span> on (grey instead of white); third box: tick Vertex, Segment, Line Endpoints. Close the window.</p>
 </li>
 <li>
 <p>Now the mouse point should have a ’target’ shape, and you can start creating lines. Click on the start point, then on the end point of the line. Then right-click and click ‘OK’. Repeat this for next lines. Multi-segment lines should work as well.</p>
@@ -228,7 +228,7 @@
 <p>To create one or more goaf areas:</p>
 <ol>
 <li>
-<p>Choose "Layer" &rarr; "Create Layer" &rarr; "New Shapefile Layer ...". Click on the 3 dots to a choose file name and appropriate path (just typing a file name in the box left of the 3 dots puts the file in the default (and probably wrong) folder). Choose: "Geometry Type" $=$ "Polygon", "Coordinate system" = "EPSG:27700 -OSGB36 / British National Grid" (or equivalent if working dealing with area outside UK). Leave all other parameters blank or default, and click "OK"</p>
+<p>Choose "Layer" &rarr; "Create Layer" &rarr; "New Shapefile Layer ...". Click on the 3 dots to a choose file name and appropriate path (just typing a file name in the box left of the 3 dots puts the file in the default (and probably wrong) folder). Choose: "Geometry Type" <span class="arithmatex">\(=\)</span> "Polygon", "Coordinate system" = "EPSG:27700 -OSGB36 / British National Grid" (or equivalent if working dealing with area outside UK). Leave all other parameters blank or default, and click "OK"</p>
 </li>
 <li>
 <p>Now a new layer is created, visible in the Layer window, together with the map: click on the layer to highlight it.</p>
@@ -312,16 +312,16 @@
 <p>Type "IDW interpolation" in the Search box</p>
 </li>
 <li>
-<p>Choose "Interpolation &rarr; "IDW Interpolation". This will open a new window. N.B. this will use IDW $=$ Inverse-Distance-Weighting", which creates a smooth layer. If you prefer linear interpolation, there is another interpolation type called "TIN Interpolation". This option is not discussed here, but works very similar to IDW interpolation.</p>
+<p>Choose "Interpolation &rarr; "IDW Interpolation". This will open a new window. N.B. this will use IDW <span class="arithmatex">\(=\)</span> Inverse-Distance-Weighting", which creates a smooth layer. If you prefer linear interpolation, there is another interpolation type called "TIN Interpolation". This option is not discussed here, but works very similar to IDW interpolation.</p>
 </li>
 <li>
-<p>Choose "Vector Layer" $=$ your point layer that you’ve just created</p>
+<p>Choose "Vector Layer" <span class="arithmatex">\(=\)</span> your point layer that you’ve just created</p>
 </li>
 <li>
 <p>This should now show "Elevation" as attribute. Click the green "+" button</p>
 </li>
 <li>
-<p>Scroll down in the window to set "Extent" $=$ "Calculate from Layer", and choose your point layer. Other extent options might be worth trying if you are interested.</p>
+<p>Scroll down in the window to set "Extent" <span class="arithmatex">\(=\)</span> "Calculate from Layer", and choose your point layer. Other extent options might be worth trying if you are interested.</p>
 </li>
 <li>
 <p>Click "Run" and it should produce a new later with smooth depths between your set points. This file will be stored under the same name with a .tif extention, indicating that is a ’geotiff’ file type. This file name will be needed in the next section. You may want to move this new layer to below your other layers so that it is plotted ’behind’ those other layers.</p>
@@ -333,17 +333,17 @@
 <p>Now some processing of those line and goaf features is needed to make them suitable for the GEMSToolbox calculation: multi-segment lines need to be split into individual lines, crossing lines need splitting up, lines and polygon features need to be merged, nodes need a unique numbering, and those nodes need attributes to store additional information (such as which line of polygon each node belongs to). This can all be done automatically using a Python script that can run inside QGIS. Here are the steps to enable this:</p>
 <ol>
 <li>
-<p>Copy the script ${\tt QGIS2GEMSTb.py}$ from the GEMSToolbox folder ${\tt src/external_functions}$ to the QGIS project folder.</p>
+<p>Copy the script <span class="arithmatex">\({\tt QGIS2GEMSTb.py}\)</span> from the GEMSToolbox folder <span class="arithmatex">\({\tt src/external\_functions}\)</span> to the QGIS project folder.</p>
 </li>
 <li>
 <p>Open the <code>QGIS2GEMSTb.py</code> file using any text editor. Scroll to the main code at the end of the file, and modify the following two lines:</p>
 <pre><code>       line_file   = "pipes.shp"
        goaf_file   = "goaf.shp"
 </code></pre>
-<p>by inserting the name you created for the shapefiles for the galleries and goaf features. If you only have digitised roadways, just leave the ${\tt goaf_file}$ empty:</p>
+<p>by inserting the name you created for the shapefiles for the galleries and goaf features. If you only have digitised roadways, just leave the <span class="arithmatex">\({\tt goaf\_file}\)</span> empty:</p>
 <pre><code>       goaf_file   = ""
 </code></pre>
-<p>or provide a non-existent filename: if the script cannot find a file, it will assume no digitised goaf area is present. Similarly, if you only have digitised one or more goaf zones, provide an empty or non-existent ${\tt line_file}$ :</p>
+<p>or provide a non-existent filename: if the script cannot find a file, it will assume no digitised goaf area is present. Similarly, if you only have digitised one or more goaf zones, provide an empty or non-existent <span class="arithmatex">\({\tt line\_file}\)</span> :</p>
 <pre><code>       line_file   = ""
 </code></pre>
 <p>By default, the output of the script will be written to a shapefile defined in the line:</p>
@@ -353,10 +353,10 @@
 <p>If you want a fixed depth of your mine plan, set the parameter to the right value, e.g. 100 m depth:</p>
 <pre><code>       height = -100.
 </code></pre>
-<p>Note that a negative value of ${\tt height}$ represents the depth of the mine workings. If you have created a variable depth layer in Section <a href="#sec:digitising_depth" data-reference-type="ref" data-reference="sec:digitising_depth">7.3.3</a>, enter that for the variable ${\tt z_layer_file}$, e.g.:</p>
+<p>Note that a negative value of <span class="arithmatex">\({\tt height}\)</span> represents the depth of the mine workings. If you have created a variable depth layer in Section <a href="#sec:digitising_depth" data-reference-type="ref" data-reference="sec:digitising_depth">7.3.3</a>, enter that for the variable <span class="arithmatex">\({\tt z\_layer\_file}\)</span>, e.g.:</p>
 <pre><code>       z_layer_file = "slope_raster_IDW.tif"
 </code></pre>
-<p>As for the other file names, if the file name is empty or the file does not exist, then the script will assume that no variable depth is required, and the value of the parameter ${\tt height}$ will be used instead.</p>
+<p>As for the other file names, if the file name is empty or the file does not exist, then the script will assume that no variable depth is required, and the value of the parameter <span class="arithmatex">\({\tt height}\)</span> will be used instead.</p>
 <p>Save the changes when ready.</p>
 </li>
 <li>
@@ -366,7 +366,7 @@
 <p>Inside the console, click the "Show Editor" icon (lined paper-with-pencil icon).</p>
 </li>
 <li>
-<p>Inside the newly opened editor, click the "Open Script ..." icon (folder icon) to open the ${\tt QGIS2GEMSTb.py}$ script.</p>
+<p>Inside the newly opened editor, click the "Open Script ..." icon (folder icon) to open the <span class="arithmatex">\({\tt QGIS2GEMSTb.py}\)</span> script.</p>
 </li>
 <li>
 <p>Run the script by pressing the "Run" button (green triangle).</p>
@@ -375,7 +375,7 @@
 <p>If all went well, it should produce some output ending with "STEP 6: Adding GEMSTb attributes COMPLETED". It will have created a set of files starting with <code>QGIS_digitised_map.*</code>.</p>
 </li>
 <li>
-<p>In the GEMSToolbox folder system, go to the folder ${\tt data/maps}$ and create a new folder for the digitised mine plans. Copy all the <code>QGIS_digitised_map.*</code> files from the QGIS project folder to this new folder.</p>
+<p>In the GEMSToolbox folder system, go to the folder <span class="arithmatex">\({\tt data/maps}\)</span> and create a new folder for the digitised mine plans. Copy all the <code>QGIS_digitised_map.*</code> files from the QGIS project folder to this new folder.</p>
 </li>
 </ol>
 <p>The process of creating lines and polygons can be repeated if multiple mine workings are modelled together. Each worked seam then gets its own GEMSToolbox shapefile. But keep in mind that, if you create those different mine workings in the same QGIS folder, the files <code>QGIS_digitised_map.*</code> will need different names for the different seams.</p>
@@ -440,6 +440,7 @@
     <script>var base_url = "..";</script>
     <script src="../js/theme_extra.js"></script>
     <script src="../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       <script src="../search/main.js"></script>
     <script>
         jQuery(function () {

@@ -188,7 +188,7 @@
 <p>Activate GEMS venv:</p>
 <ul>
 <li>
-<p>On Windows: <code>GEMS</code>$\backslash$<code>Scripts</code>$\backslash$<code>activate</code></p>
+<p>On Windows: <code>GEMS</code><span class="arithmatex">\(\backslash\)</span><code>Scripts</code><span class="arithmatex">\(\backslash\)</span><code>activate</code></p>
 </li>
 <li>
 <p>On MacOS and Linux: <code>source GEMS/bin/activate</code></p>
@@ -262,13 +262,13 @@
 <p>In the Contents pane (on the left), right-click on the mine plan, and choose ’Zoom to Layer’. You should now see the mine plan in the map.</p>
 </li>
 <li>
-<p>The mine plan does not have a correct location yet (it probably appears at $0^o$E $0^o$N, i.e. somewhere in the middle of the Atlantic Ocean), and needs to be ’georeferenced’, which means that the mine plan needs to be connected to the map in the right geographical location:</p>
+<p>The mine plan does not have a correct location yet (it probably appears at <span class="arithmatex">\(0^o\)</span>E <span class="arithmatex">\(0^o\)</span>N, i.e. somewhere in the middle of the Atlantic Ocean), and needs to be ’georeferenced’, which means that the mine plan needs to be connected to the map in the right geographical location:</p>
 <ol>
 <li>
 <p>In the Contents pane, click on the mine plan filename.</p>
 </li>
 <li>
-<p>In the top menu, click the ’Imagery’ tab, then $\Rightarrow$ Georeference $\Rightarrow$ Add Control Points</p>
+<p>In the top menu, click the ’Imagery’ tab, then <span class="arithmatex">\(\Rightarrow\)</span> Georeference <span class="arithmatex">\(\Rightarrow\)</span> Add Control Points</p>
 </li>
 <li>
 <p>Choose a point on the mine plan that you can accurately connect to a point on the map, e.g. an old building, bridge, church.</p>
@@ -303,7 +303,7 @@
 <p>In the Catalog pane, expand ’Databases’ to see the pipes in its contents.</p>
 </li>
 <li>
-<p>Right-click on the <code>.gdb</code> file inside the ’Databases’, and choose New $\Rightarrow$ Feature Class. Choose a name (e.g. ’pipes’). In ’Feature Class Type’, choose ’Line’. Un-tick the ’Z-values’ option, since we will assume that seams are horizontal, and will add a uniform depth for the seam later. Click ’Next’ multiple times to check all other options, but default values are probably fine. Click ’Finish’ to initialize the dataset.</p>
+<p>Right-click on the <code>.gdb</code> file inside the ’Databases’, and choose New <span class="arithmatex">\(\Rightarrow\)</span> Feature Class. Choose a name (e.g. ’pipes’). In ’Feature Class Type’, choose ’Line’. Un-tick the ’Z-values’ option, since we will assume that seams are horizontal, and will add a uniform depth for the seam later. Click ’Next’ multiple times to check all other options, but default values are probably fine. Click ’Finish’ to initialize the dataset.</p>
 </li>
 <li>
 <p>Click the output data set that was just created (’pipes’?) in the Contents pane.</p>
@@ -354,7 +354,7 @@
 <p>Click on triangle in front of ’Databases’ to look at its contents.</p>
 </li>
 <li>
-<p>Right-click on the <code>.gdb</code> file inside the ’Databases’, and choose New $\Rightarrow$ Feature Class. Choose a name (e.g. ’goaf’). Un-tick the ’Z-values’ option again. Click ’Next’ multiple times to check all other options, but default values are probably fine. Click ’Finish’ to initialize the dataset.</p>
+<p>Right-click on the <code>.gdb</code> file inside the ’Databases’, and choose New <span class="arithmatex">\(\Rightarrow\)</span> Feature Class. Choose a name (e.g. ’goaf’). Un-tick the ’Z-values’ option again. Click ’Next’ multiple times to check all other options, but default values are probably fine. Click ’Finish’ to initialize the dataset.</p>
 </li>
 <li>
 <p>Click the output data set that was just created (’goaf’?) in the Contents pane.</p>
@@ -447,13 +447,13 @@
 <p>Basemaps: QGIS doesn’t start automatically with a basemap. The first time, you need to install basemaps:</p>
 <ol>
 <li>
-<p>Install a plugin to enable that. Choose top menu "Plugins" $\rightarrow$ "Manage and Install plugins", and find "QuickMapServices" in list on the left. Install and enable the plugin</p>
+<p>Install a plugin to enable that. Choose top menu "Plugins" <span class="arithmatex">\(\rightarrow\)</span> "Manage and Install plugins", and find "QuickMapServices" in list on the left. Install and enable the plugin</p>
 </li>
 <li>
-<p>Install the main list of standard maps: Choose top menu "Web" $\rightarrow$ QuickMapServices $\rightarrow$ Settings. Click on tab "More Services", and choose "Get contributed pack".</p>
+<p>Install the main list of standard maps: Choose top menu "Web" <span class="arithmatex">\(\rightarrow\)</span> QuickMapServices <span class="arithmatex">\(\rightarrow\)</span> Settings. Click on tab "More Services", and choose "Get contributed pack".</p>
 </li>
 <li>
-<p>Once basemaps are installed, choose your basemap from top menu "Web" $\rightarrow$ QuickMapServices.</p>
+<p>Once basemaps are installed, choose your basemap from top menu "Web" <span class="arithmatex">\(\rightarrow\)</span> QuickMapServices.</p>
 </li>
 </ol>
 </li>
@@ -465,13 +465,13 @@
 <p>Now import the mine plan to be georeferenced:</p>
 <ol>
 <li>
-<p>Top menu "Layer" $\rightarrow$ "Georeferencer". This opens a new window.</p>
+<p>Top menu "Layer" <span class="arithmatex">\(\rightarrow\)</span> "Georeferencer". This opens a new window.</p>
 </li>
 <li>
-<p>Choose the map file to be imported: top menu "File" $\rightarrow$ "Open Raster …". This opens the map in this Gereferencer window.</p>
+<p>Choose the map file to be imported: top menu "File" <span class="arithmatex">\(\rightarrow\)</span> "Open Raster …". This opens the map in this Gereferencer window.</p>
 </li>
 <li>
-<p>Go to top menu "Settings" $\rightarrow$ "Transformation Settings". Set the “Transformation Type” to "Polynomial 1" (default is "Linear" which does not work, since it doesn’t rotate maps).</p>
+<p>Go to top menu "Settings" <span class="arithmatex">\(\rightarrow\)</span> "Transformation Settings". Set the “Transformation Type” to "Polynomial 1" (default is "Linear" which does not work, since it doesn’t rotate maps).</p>
 </li>
 <li>
 <p>Choose the "Output file" where the georeferenced version of the file will be stored.</p>
@@ -503,7 +503,7 @@
 </ol>
 </li>
 <li>
-<p>Once you are happy with the control points, click on the green triangle button in the georeferencing window (or choose top menu "File" $\rightarrow$ "Start Georeferencing". Your georeferenced map will now appear on top of the basemap in the main QGIS window as a new layer.</p>
+<p>Once you are happy with the control points, click on the green triangle button in the georeferencing window (or choose top menu "File" <span class="arithmatex">\(\rightarrow\)</span> "Start Georeferencing". Your georeferenced map will now appear on top of the basemap in the main QGIS window as a new layer.</p>
 </li>
 <li>
 <p>Change the transparancy of the map by right-clicking on the map layer, choose "properties" (which opens the “Layer properties” window), choose "transparancy" in the list on the left. At the top, move the “Global Opacity” bar to around 50%. Press "OK".</p>
@@ -512,14 +512,14 @@
 <p>Now you should be able to see both the map and the basemap underneath, and you can check if the map is properly georeferenced. ’item If you want to make changes, the "georeferencer" window should still be open, so you can remove control points (right-click on the point in the table, and choose remove), or add more points, then repeat the "Start Georeferencing" again, which will create another layer. Then remove the first map layer, since you only need the new one.</p>
 </li>
 </ol>
-<p>Don’t forget to regularly save the project: top menu "Project" $\rightarrow$ "Save".</p>
+<p>Don’t forget to regularly save the project: top menu "Project" <span class="arithmatex">\(\rightarrow\)</span> "Save".</p>
 <h2 id="digitising-a-mine-plan">Digitising a mine plan</h2>
 <p>Now that mine plan is imported and georeferenced, the next step is to digitise the mine plan. We first digitise any galleries and roadways, and then any goaf areas. If your mine plan only contains galleries/roadways or only contains goaf, then proceed with just digitising those only. Digitising x-y coordinates for any mine plan features is explained in Sections <a href="#sec:digitising_galleries" data-reference-type="ref" data-reference="sec:digitising_galleries">7.3.1</a> and <a href="#sec:digitising_goaf" data-reference-type="ref" data-reference="sec:digitising_goaf">7.3.2</a>. Section <a href="#sec:digitising_depth" data-reference-type="ref" data-reference="sec:digitising_depth">7.3.3</a> explains how to digitise the depth of a mine plan, either as a constant-depth flat plane, or as a variable-depth dipping or curving plane.</p>
 <h3 id="digitising-galleries-and-roadways">Digitising galleries and roadways</h3>
 <p>To create a network of galleries:</p>
 <ol>
 <li>
-<p>Choose "Layer" $\rightarrow$ "Create Layer" $\rightarrow$ "New Shapefile Layer ...". Click on the 3 dots to choose a file name and appropriate path (just typing a file name in the box left of the 3 dots puts the file in the default (and probably wrong) folder). Choose: "Geometry Type" $=$ "LineString", "Coordinate system" = "EPSG:27700 -OSGB36 / British National Grid" (or equivalent if working dealing with an area outside the UK). Leave all other parameters blank or default, and click "OK"</p>
+<p>Choose "Layer" <span class="arithmatex">\(\rightarrow\)</span> "Create Layer" <span class="arithmatex">\(\rightarrow\)</span> "New Shapefile Layer ...". Click on the 3 dots to choose a file name and appropriate path (just typing a file name in the box left of the 3 dots puts the file in the default (and probably wrong) folder). Choose: "Geometry Type" <span class="arithmatex">\(=\)</span> "LineString", "Coordinate system" = "EPSG:27700 -OSGB36 / British National Grid" (or equivalent if working dealing with an area outside the UK). Leave all other parameters blank or default, and click "OK"</p>
 </li>
 <li>
 <p>Now a new layer is created, visible in the QGIS "Layers" window, together with the map: click on the layer to highlight it.</p>
@@ -528,7 +528,7 @@
 <p>Click on the pencil icon ("Toggle Editing") in the 2nd row, and then on the Line-with-Star icon ("Add Line Feature") to the right of it.</p>
 </li>
 <li>
-<p>Switch on the snapping tool: "Project" $\rightarrow$ "Snapping Options". A thin, wide window appears with all options: first box: snapping $=$ on (grey instead of white); third box: tick Vertex, Segment, Line Endpoints. Close the window.</p>
+<p>Switch on the snapping tool: "Project" <span class="arithmatex">\(\rightarrow\)</span> "Snapping Options". A thin, wide window appears with all options: first box: snapping <span class="arithmatex">\(=\)</span> on (grey instead of white); third box: tick Vertex, Segment, Line Endpoints. Close the window.</p>
 </li>
 <li>
 <p>Now the mouse point should have a ’target’ shape, and you can start creating lines. Click on the start point, then on the end point of the line. Then right-click and click ‘OK’. Repeat this for next lines. Multi-segment lines should work as well.</p>
@@ -544,7 +544,7 @@
 <p>To create one or more goaf areas:</p>
 <ol>
 <li>
-<p>Choose "Layer" $\rightarrow$ "Create Layer" $\rightarrow$ "New Shapefile Layer ...". Click on the 3 dots to a choose file name and appropriate path (just typing a file name in the box left of the 3 dots puts the file in the default (and probably wrong) folder). Choose: "Geometry Type" $=$ "Polygon", "Coordinate system" = "EPSG:27700 -OSGB36 / British National Grid" (or equivalent if working dealing with area outside UK). Leave all other parameters blank or default, and click "OK"</p>
+<p>Choose "Layer" <span class="arithmatex">\(\rightarrow\)</span> "Create Layer" <span class="arithmatex">\(\rightarrow\)</span> "New Shapefile Layer ...". Click on the 3 dots to a choose file name and appropriate path (just typing a file name in the box left of the 3 dots puts the file in the default (and probably wrong) folder). Choose: "Geometry Type" <span class="arithmatex">\(=\)</span> "Polygon", "Coordinate system" = "EPSG:27700 -OSGB36 / British National Grid" (or equivalent if working dealing with area outside UK). Leave all other parameters blank or default, and click "OK"</p>
 </li>
 <li>
 <p>Now a new layer is created, visible in the Layer window, together with the map: click on the layer to highlight it.</p>
@@ -574,7 +574,7 @@
 <p>Create a QGIS layer with depth points:</p>
 <ol>
 <li>
-<p>Choose "Layer" $\rightarrow$ "Create Layer" $\rightarrow$ "New Shapefile Layer"</p>
+<p>Choose "Layer" <span class="arithmatex">\(\rightarrow\)</span> "Create Layer" <span class="arithmatex">\(\rightarrow\)</span> "New Shapefile Layer"</p>
 </li>
 <li>
 <p>Choose a file name for the 3-D layer (make sure to choose the correct folder!)</p>
@@ -622,22 +622,22 @@
 </ol>
 </li>
 <li>
-<p>Open the "Processing Toolbox" if not already open ("Processing" $\rightarrow$ "Toolbox")</p>
+<p>Open the "Processing Toolbox" if not already open ("Processing" <span class="arithmatex">\(\rightarrow\)</span> "Toolbox")</p>
 <ol>
 <li>
 <p>Type "IDW interpolation" in the Search box</p>
 </li>
 <li>
-<p>Choose "Interpolation $\rightarrow$ "IDW Interpolation". This will open a new window. N.B. this will use IDW $=$ Inverse-Distance-Weighting", which creates a smooth layer. If you prefer linear interpolation, there is another interpolation type called "TIN Interpolation". This option is not discussed here, but works very similar to IDW interpolation.</p>
+<p>Choose "Interpolation <span class="arithmatex">\(\rightarrow\)</span> "IDW Interpolation". This will open a new window. N.B. this will use IDW <span class="arithmatex">\(=\)</span> Inverse-Distance-Weighting", which creates a smooth layer. If you prefer linear interpolation, there is another interpolation type called "TIN Interpolation". This option is not discussed here, but works very similar to IDW interpolation.</p>
 </li>
 <li>
-<p>Choose "Vector Layer" $=$ your point layer that you’ve just created</p>
+<p>Choose "Vector Layer" <span class="arithmatex">\(=\)</span> your point layer that you’ve just created</p>
 </li>
 <li>
 <p>This should now show "Elevation" as attribute. Click the green "+" button</p>
 </li>
 <li>
-<p>Scroll down in the window to set "Extent" $=$ "Calculate from Layer", and choose your point layer. Other extent options might be worth trying if you are interested.</p>
+<p>Scroll down in the window to set "Extent" <span class="arithmatex">\(=\)</span> "Calculate from Layer", and choose your point layer. Other extent options might be worth trying if you are interested.</p>
 </li>
 <li>
 <p>Click "Run" and it should produce a new later with smooth depths between your set points. This file will be stored under the same name with a .tif extention, indicating that is a ’geotiff’ file type. This file name will be needed in the next section. You may want to move this new layer to below your other layers so that it is plotted ’behind’ those other layers.</p>
@@ -649,17 +649,17 @@
 <p>Now some processing of those line and goaf features is needed to make them suitable for the GEMSToolbox calculation: multi-segment lines need to be split into individual lines, crossing lines need splitting up, lines and polygon features need to be merged, nodes need a unique numbering, and those nodes need attributes to store additional information (such as which line of polygon each node belongs to). This can all be done automatically using a Python script that can run inside QGIS. Here are the steps to enable this:</p>
 <ol>
 <li>
-<p>Copy the script ${\tt QGIS2GEMSTb.py}$ from the GEMSToolbox folder ${\tt src/external_functions}$ to the QGIS project folder.</p>
+<p>Copy the script <span class="arithmatex">\({\tt QGIS2GEMSTb.py}\)</span> from the GEMSToolbox folder <span class="arithmatex">\({\tt src/external\_functions}\)</span> to the QGIS project folder.</p>
 </li>
 <li>
 <p>Open the <code>QGIS2GEMSTb.py</code> file using any text editor. Scroll to the main code at the end of the file, and modify the following two lines:</p>
 <pre><code>       line_file   = "pipes.shp"
        goaf_file   = "goaf.shp"
 </code></pre>
-<p>by inserting the name you created for the shapefiles for the galleries and goaf features. If you only have digitised roadways, just leave the ${\tt goaf_file}$ empty:</p>
+<p>by inserting the name you created for the shapefiles for the galleries and goaf features. If you only have digitised roadways, just leave the <span class="arithmatex">\({\tt goaf\_file}\)</span> empty:</p>
 <pre><code>       goaf_file   = ""
 </code></pre>
-<p>or provide a non-existent filename: if the script cannot find a file, it will assume no digitised goaf area is present. Similarly, if you only have digitised one or more goaf zones, provide an empty or non-existent ${\tt line_file}$ :</p>
+<p>or provide a non-existent filename: if the script cannot find a file, it will assume no digitised goaf area is present. Similarly, if you only have digitised one or more goaf zones, provide an empty or non-existent <span class="arithmatex">\({\tt line\_file}\)</span> :</p>
 <pre><code>       line_file   = ""
 </code></pre>
 <p>By default, the output of the script will be written to a shapefile defined in the line:</p>
@@ -669,20 +669,20 @@
 <p>If you want a fixed depth of your mine plan, set the parameter to the right value, e.g. 100 m depth:</p>
 <pre><code>       height = -100.
 </code></pre>
-<p>Note that a negative value of ${\tt height}$ represents the depth of the mine workings. If you have created a variable depth layer in Section <a href="#sec:digitising_depth" data-reference-type="ref" data-reference="sec:digitising_depth">7.3.3</a>, enter that for the variable ${\tt z_layer_file}$, e.g.:</p>
+<p>Note that a negative value of <span class="arithmatex">\({\tt height}\)</span> represents the depth of the mine workings. If you have created a variable depth layer in Section <a href="#sec:digitising_depth" data-reference-type="ref" data-reference="sec:digitising_depth">7.3.3</a>, enter that for the variable <span class="arithmatex">\({\tt z\_layer\_file}\)</span>, e.g.:</p>
 <pre><code>       z_layer_file = "slope_raster_IDW.tif"
 </code></pre>
-<p>As for the other file names, if the file name is empty or the file does not exist, then the script will assume that no variable depth is required, and the value of the parameter ${\tt height}$ will be used instead.</p>
+<p>As for the other file names, if the file name is empty or the file does not exist, then the script will assume that no variable depth is required, and the value of the parameter <span class="arithmatex">\({\tt height}\)</span> will be used instead.</p>
 <p>Save the changes when ready.</p>
 </li>
 <li>
-<p>In QGIS, Open the Python Console in "Plugins" $\rightarrow$ "Python console". This should open the console below your map.</p>
+<p>In QGIS, Open the Python Console in "Plugins" <span class="arithmatex">\(\rightarrow\)</span> "Python console". This should open the console below your map.</p>
 </li>
 <li>
 <p>Inside the console, click the "Show Editor" icon (lined paper-with-pencil icon).</p>
 </li>
 <li>
-<p>Inside the newly opened editor, click the "Open Script ..." icon (folder icon) to open the ${\tt QGIS2GEMSTb.py}$ script.</p>
+<p>Inside the newly opened editor, click the "Open Script ..." icon (folder icon) to open the <span class="arithmatex">\({\tt QGIS2GEMSTb.py}\)</span> script.</p>
 </li>
 <li>
 <p>Run the script by pressing the "Run" button (green triangle).</p>
@@ -691,7 +691,7 @@
 <p>If all went well, it should produce some output ending with "STEP 6: Adding GEMSTb attributes COMPLETED". It will have created a set of files starting with <code>QGIS_digitised_map.*</code>.</p>
 </li>
 <li>
-<p>In the GEMSToolbox folder system, go to the folder ${\tt data/maps}$ and create a new folder for the digitised mine plans. Copy all the <code>QGIS_digitised_map.*</code> files from the QGIS project folder to this new folder.</p>
+<p>In the GEMSToolbox folder system, go to the folder <span class="arithmatex">\({\tt data/maps}\)</span> and create a new folder for the digitised mine plans. Copy all the <code>QGIS_digitised_map.*</code> files from the QGIS project folder to this new folder.</p>
 </li>
 </ol>
 <p>The process of creating lines and polygons can be repeated if multiple mine workings are modelled together. Each worked seam then gets its own GEMSToolbox shapefile. But keep in mind that, if you create those different mine workings in the same QGIS folder, the files <code>QGIS_digitised_map.*</code> will need different names for the different seams.</p>
@@ -724,7 +724,7 @@
 <p>A <code>.vtk</code> file for each of the runs in that scenario named: <code>[scenario_filename]_[tag]_[runindex]</code></p>
 </li>
 <li>
-<p>A <code>.csv</code> file which records the relative temperature of each outflow node in each run. The relative temperature $T_r$ is given by $T_r = T_{out}/\Delta T$, where $\Delta T = |T_{r,max} - T_{w,min}|$, i.e. the difference between maximum rock temperature and minimum water temperature.</p>
+<p>A <code>.csv</code> file which records the relative temperature of each outflow node in each run. The relative temperature <span class="arithmatex">\(T_r\)</span> is given by <span class="arithmatex">\(T_r = T_{out}/\Delta T\)</span>, where <span class="arithmatex">\(\Delta T = |T_{r,max} - T_{w,min}|\)</span>, i.e. the difference between maximum rock temperature and minimum water temperature.</p>
 </li>
 </ul>
 <p>The <code>.vtk</code> file contains all the output information as set in the input file, and these can be viewed using Paraview. Here are a few basic steps to create a plot to view the results.</p>
@@ -751,7 +751,7 @@
 <p>To get information about a specific node in the network, click the <span class="image placeholder" original-image-src="figures/dot?_icon.png" original-image-title="" height="\baselineskip">image</span> icon, and click ’OK’. Now zoom in onto the area of interest, and hover the mouse over a node to see the available information.</p>
 </li>
 <li>
-<p>There are a lot of options to customise the plot further. One handy option in Paraview is that you can save the customised view as a ’state’, and then load it back in later on, for the same or for a different data set. To do that, choose ’File’ $\Rightarrow$ ’Save State...’, which saves the state as a <code>.pvsm</code> file. Next time you use Paraview, you can use the same state by, instead of using the <img src="media/figures/folder_icon.png" alt="image" /> icon to load a <code>.vtk</code> file, use ’File’ $\Rightarrow$ ’Load State...’, and choose the previously saved <code>.pvsm</code> file. In the ’Load State Data File’ option, choose ’Choose File Names’, and choose the <code>.vtk</code> file to display, then press ’OK’. The <code>outputs</code> folder in the GEMSToolbox code already contains a <code>.pvsm</code> file to get started.</p>
+<p>There are a lot of options to customise the plot further. One handy option in Paraview is that you can save the customised view as a ’state’, and then load it back in later on, for the same or for a different data set. To do that, choose ’File’ <span class="arithmatex">\(\Rightarrow\)</span> ’Save State...’, which saves the state as a <code>.pvsm</code> file. Next time you use Paraview, you can use the same state by, instead of using the <img src="media/figures/folder_icon.png" alt="image" /> icon to load a <code>.vtk</code> file, use ’File’ <span class="arithmatex">\(\Rightarrow\)</span> ’Load State...’, and choose the previously saved <code>.pvsm</code> file. In the ’Load State Data File’ option, choose ’Choose File Names’, and choose the <code>.vtk</code> file to display, then press ’OK’. The <code>outputs</code> folder in the GEMSToolbox code already contains a <code>.pvsm</code> file to get started.</p>
 </li>
 <li>
 <p>Change the background colour, find the ’Background’ section in ’Properties’, untick ’Use Color Palette For Background’, click background button to choose suitable colour (Figure <a href="#fig:background" data-reference-type="ref" data-reference="fig:background">5</a>).</p>
@@ -795,7 +795,7 @@
 <p><strong>fixed_head_node</strong> ([[2, 0.0]]): node nr where hydraulic head is fixed</p>
 </li>
 <li>
-<p><strong>flow_error_threshold</strong> ($1.0 \times 10^{-15}$): numerical accuracy of the flow solver</p>
+<p><strong>flow_error_threshold</strong> (<span class="arithmatex">\(1.0 \times 10^{-15}\)</span>): numerical accuracy of the flow solver</p>
 </li>
 <li>
 <p><strong>gis_overrides</strong> ( ): parameters to be overriden using the value found in the GIS files.</p>
@@ -849,7 +849,7 @@
 <p><strong>n_steps</strong> (10): the number of steps it takes the water to flow through a pipe.</p>
 </li>
 <li>
-<p><strong>no_seams</strong> (1): number of seams for scenario of regular structured grids (if igeom $==$ step load_GIS_geometry)</p>
+<p><strong>no_seams</strong> (1): number of seams for scenario of regular structured grids (if igeom <span class="arithmatex">\(==\)</span> step load_GIS_geometry)</p>
 </li>
 <li>
 <p><strong>node_outputs</strong> (Tn T(C), head Head(m), tt_n transit_times(yrs), wells Well_positions, n_tree_idx, Tree_pos, node_id node_id]): specifies the desired nodal outputs to be saved in the vtk file for each run. List of valid node outputs:</p>
@@ -879,10 +879,10 @@
 <p><strong>nyrs</strong> (3 yrs): the number of simulation years is to be run for.</p>
 </li>
 <li>
-<p><strong>open_th</strong> (0.5): threshold value of (random) porosity above which a pipe is considered ’open’. Applies to the cases where mat_prop_case $&gt;$ 1.</p>
+<p><strong>open_th</strong> (0.5): threshold value of (random) porosity above which a pipe is considered ’open’. Applies to the cases where mat_prop_case <span class="arithmatex">\(&gt;\)</span> 1.</p>
 </li>
 <li>
-<p><strong>pipe_outputs</strong> ([pipe_id pipe_id, vs Water_velocity(m/s), Q_real Flow_rate(m3/s), poro_e Porosity($\mathrm{m^3/m^3}$), Re Re(-), d Pipe_diameters(m), alphas Alpha, rp R_0, dT_model Heat_Model_dT(C)]): specifies the desired pipe outputs to be saved as cell values in the vtk file for each run. List of valid pipe outputs:</p>
+<p><strong>pipe_outputs</strong> ([pipe_id pipe_id, vs Water_velocity(m/s), Q_real Flow_rate(m3/s), poro_e Porosity(<span class="arithmatex">\(\mathrm{m^3/m^3}\)</span>), Re Re(-), d Pipe_diameters(m), alphas Alpha, rp R_0, dT_model Heat_Model_dT(C)]): specifies the desired pipe outputs to be saved as cell values in the vtk file for each run. List of valid pipe outputs:</p>
 </li>
 <li>
 <p>pipe_id: the id of the pipes as held within the GEMS toolbox.</p>
@@ -894,7 +894,7 @@
 <p>v: the water velocity inside the pipe (m/s) assumed uniform.</p>
 </li>
 <li>
-<p>Qv: the vectorised flow rate through the pipes (m$^3$/s). Saved as a vector in VTK with an x, y and z component.</p>
+<p>Qv: the vectorised flow rate through the pipes (m<span class="arithmatex">\(^3\)</span>/s). Saved as a vector in VTK with an x, y and z component.</p>
 </li>
 <li>
 <p>Q: the absolute flow rate through the pipes. Is equal to the magnitude of Qv.</p>
@@ -930,31 +930,31 @@
 <p><strong>q_out</strong> ([3]): array of abstraction node ID(s).</p>
 </li>
 <li>
-<p><strong>qset</strong> ([0.01] $\mathrm{m^3/s}$): the flow rate in/out of each injection and abstraction wells</p>
+<p><strong>qset</strong> ([0.01] <span class="arithmatex">\(\mathrm{m^3/s}\)</span>): the flow rate in/out of each injection and abstraction wells</p>
 </li>
 <li>
 <p><strong>Qth_tree</strong> (1.0e-07): the cut-off value for the flow comparison check used when disregarding a node for the computation of the flow tree required for the sequential heat calculations. This might need adjusting if porous pipes sections of the models are not added to the tree.</p>
 </li>
 <li>
-<p><strong>rho_f</strong> (1000 $\mathrm{kg/m^3}$): density of the mine water.</p>
+<p><strong>rho_f</strong> (1000 <span class="arithmatex">\(\mathrm{kg/m^3}\)</span>): density of the mine water.</p>
 </li>
 <li>
-<p><strong>rho_r</strong> (2400 $\mathrm{kg/m^3}$): density of the rock mass surrounding the mine.</p>
+<p><strong>rho_r</strong> (2400 <span class="arithmatex">\(\mathrm{kg/m^3}\)</span>): density of the rock mass surrounding the mine.</p>
 </li>
 <li>
-<p><strong>rng_seed</strong> (1): random number generatore seed used for random porosity models (when mat_prop_case $&gt;$ 1)</p>
+<p><strong>rng_seed</strong> (1): random number generatore seed used for random porosity models (when mat_prop_case <span class="arithmatex">\(&gt;\)</span> 1)</p>
 </li>
 <li>
-<p><strong>seam_spacing</strong> (100 m): spacing of seams in regular grid models (when igeom $==$ step_grid_geometry)</p>
+<p><strong>seam_spacing</strong> (100 m): spacing of seams in regular grid models (when igeom <span class="arithmatex">\(==\)</span> step_grid_geometry)</p>
 </li>
 <li>
 <p><strong>Tag</strong> ( ): allows you to specify a tag that will be added to the output .vtk filename.</p>
 </li>
 <li>
-<p><strong>Tf_ini</strong> ([3] $\mathrm{{}^o}C$): array of the same length as for parameter q_in with water injection temperature(s).</p>
+<p><strong>Tf_ini</strong> ([3] <span class="arithmatex">\(\mathrm{{}^o}C\)</span>): array of the same length as for parameter q_in with water injection temperature(s).</p>
 </li>
 <li>
-<p><strong>Tr</strong> ([-0.032, 8.8] $\mathrm{{}^o}C/m$, $\mathrm{{}^o}C$): Rock temperature definition: first parameter is the vertical gradient, while the 2nd value is the rock temperature at the surface.</p>
+<p><strong>Tr</strong> ([-0.032, 8.8] <span class="arithmatex">\(\mathrm{{}^o}C/m\)</span>, <span class="arithmatex">\(\mathrm{{}^o}C\)</span>): Rock temperature definition: first parameter is the vertical gradient, while the 2nd value is the rock temperature at the surface.</p>
 </li>
 <li>
 <p><strong>v_pipe_length</strong> (50 m): y-length of each gallery segment (used for structured grids only)</p>
@@ -980,7 +980,7 @@
 </ul>
 <h2 id="paraview-common-problems">Paraview common problems</h2>
 <ul>
-<li><strong>Line width of cell attributes:</strong> On MacOS systems, lines don’t render correctly if the Line Width is larger than $1.0$. The problem is discussed in <a href="https://discourse.paraview.org/t/cell-values-partly-disappear-when-editing-width-on-mac/11666">this forum post</a>. A partial work-around is to convert the lines (i.e. cell data) into interpolated points (i.e. point data). To do this, click on the data set in the Pipeline Browser’ which contains the line data. Then choose the ’Filters’ tab, then ’Alphabetically’, and then ’Cell Data to Point Data’. Choose your line data to plot, and you should be able to use larger Line Widths now. The difference is that the original line data has uniform line values, whereas the derived ’Cell Data to Point Data’ dataset interpolates between the points on either end of the line. So for rapidly changing values, it might not be what you want.</li>
+<li><strong>Line width of cell attributes:</strong> On MacOS systems, lines don’t render correctly if the Line Width is larger than <span class="arithmatex">\(1.0\)</span>. The problem is discussed in <a href="https://discourse.paraview.org/t/cell-values-partly-disappear-when-editing-width-on-mac/11666">this forum post</a>. A partial work-around is to convert the lines (i.e. cell data) into interpolated points (i.e. point data). To do this, click on the data set in the Pipeline Browser’ which contains the line data. Then choose the ’Filters’ tab, then ’Alphabetically’, and then ’Cell Data to Point Data’. Choose your line data to plot, and you should be able to use larger Line Widths now. The difference is that the original line data has uniform line values, whereas the derived ’Cell Data to Point Data’ dataset interpolates between the points on either end of the line. So for rapidly changing values, it might not be what you want.</li>
 </ul>
               
             </div>
@@ -1013,6 +1013,7 @@
     <script>var base_url = "..";</script>
     <script src="../js/theme_extra.js"></script>
     <script src="../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       <script src="../search/main.js"></script>
     <script>
         jQuery(function () {

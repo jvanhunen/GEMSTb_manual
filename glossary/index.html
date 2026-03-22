@@ -132,7 +132,7 @@
 <p><strong>fixed_head_node</strong> ([[2, 0.0]]): node nr where hydraulic head is fixed</p>
 </li>
 <li>
-<p><strong>flow_error_threshold</strong> ($1.0 \times 10^{-15}$): numerical accuracy of the flow solver</p>
+<p><strong>flow_error_threshold</strong> (<span class="arithmatex">\(1.0 \times 10^{-15}\)</span>): numerical accuracy of the flow solver</p>
 </li>
 <li>
 <p><strong>gis_overrides</strong> ( ): parameters to be overriden using the value found in the GIS files.</p>
@@ -186,7 +186,7 @@
 <p><strong>n_steps</strong> (10): the number of steps it takes the water to flow through a pipe.</p>
 </li>
 <li>
-<p><strong>no_seams</strong> (1): number of seams for scenario of regular structured grids (if igeom $==$ step load_GIS_geometry)</p>
+<p><strong>no_seams</strong> (1): number of seams for scenario of regular structured grids (if igeom <span class="arithmatex">\(==\)</span> step load_GIS_geometry)</p>
 </li>
 <li>
 <p><strong>node_outputs</strong> (Tn T(C), head Head(m), tt_n transit_times(yrs), wells Well_positions, n_tree_idx, Tree_pos, node_id node_id]): specifies the desired nodal outputs to be saved in the vtk file for each run. List of valid node outputs:</p>
@@ -216,10 +216,10 @@
 <p><strong>nyrs</strong> (3 yrs): the number of simulation years is to be run for.</p>
 </li>
 <li>
-<p><strong>open_th</strong> (0.5): threshold value of (random) porosity above which a pipe is considered ’open’. Applies to the cases where mat_prop_case $&gt;$ 1.</p>
+<p><strong>open_th</strong> (0.5): threshold value of (random) porosity above which a pipe is considered ’open’. Applies to the cases where mat_prop_case <span class="arithmatex">\(&gt;\)</span> 1.</p>
 </li>
 <li>
-<p><strong>pipe_outputs</strong> ([pipe_id pipe_id, vs Water_velocity(m/s), Q_real Flow_rate(m3/s), poro_e Porosity($\mathrm{m^3/m^3}$), Re Re(-), d Pipe_diameters(m), alphas Alpha, rp R_0, dT_model Heat_Model_dT(C)]): specifies the desired pipe outputs to be saved as cell values in the vtk file for each run. List of valid pipe outputs:</p>
+<p><strong>pipe_outputs</strong> ([pipe_id pipe_id, vs Water_velocity(m/s), Q_real Flow_rate(m3/s), poro_e Porosity(<span class="arithmatex">\(\mathrm{m^3/m^3}\)</span>), Re Re(-), d Pipe_diameters(m), alphas Alpha, rp R_0, dT_model Heat_Model_dT(C)]): specifies the desired pipe outputs to be saved as cell values in the vtk file for each run. List of valid pipe outputs:</p>
 </li>
 <li>
 <p>pipe_id: the id of the pipes as held within the GEMS toolbox.</p>
@@ -231,7 +231,7 @@
 <p>v: the water velocity inside the pipe (m/s) assumed uniform.</p>
 </li>
 <li>
-<p>Qv: the vectorised flow rate through the pipes (m$^3$/s). Saved as a vector in VTK with an x, y and z component.</p>
+<p>Qv: the vectorised flow rate through the pipes (m<span class="arithmatex">\(^3\)</span>/s). Saved as a vector in VTK with an x, y and z component.</p>
 </li>
 <li>
 <p>Q: the absolute flow rate through the pipes. Is equal to the magnitude of Qv.</p>
@@ -267,31 +267,31 @@
 <p><strong>q_out</strong> ([3]): array of abstraction node ID(s).</p>
 </li>
 <li>
-<p><strong>qset</strong> ([0.01] $\mathrm{m^3/s}$): the flow rate in/out of each injection and abstraction wells</p>
+<p><strong>qset</strong> ([0.01] <span class="arithmatex">\(\mathrm{m^3/s}\)</span>): the flow rate in/out of each injection and abstraction wells</p>
 </li>
 <li>
 <p><strong>Qth_tree</strong> (1.0e-07): the cut-off value for the flow comparison check used when disregarding a node for the computation of the flow tree required for the sequential heat calculations. This might need adjusting if porous pipes sections of the models are not added to the tree.</p>
 </li>
 <li>
-<p><strong>rho_f</strong> (1000 $\mathrm{kg/m^3}$): density of the mine water.</p>
+<p><strong>rho_f</strong> (1000 <span class="arithmatex">\(\mathrm{kg/m^3}\)</span>): density of the mine water.</p>
 </li>
 <li>
-<p><strong>rho_r</strong> (2400 $\mathrm{kg/m^3}$): density of the rock mass surrounding the mine.</p>
+<p><strong>rho_r</strong> (2400 <span class="arithmatex">\(\mathrm{kg/m^3}\)</span>): density of the rock mass surrounding the mine.</p>
 </li>
 <li>
-<p><strong>rng_seed</strong> (1): random number generatore seed used for random porosity models (when mat_prop_case $&gt;$ 1)</p>
+<p><strong>rng_seed</strong> (1): random number generatore seed used for random porosity models (when mat_prop_case <span class="arithmatex">\(&gt;\)</span> 1)</p>
 </li>
 <li>
-<p><strong>seam_spacing</strong> (100 m): spacing of seams in regular grid models (when igeom $==$ step_grid_geometry)</p>
+<p><strong>seam_spacing</strong> (100 m): spacing of seams in regular grid models (when igeom <span class="arithmatex">\(==\)</span> step_grid_geometry)</p>
 </li>
 <li>
 <p><strong>Tag</strong> ( ): allows you to specify a tag that will be added to the output .vtk filename.</p>
 </li>
 <li>
-<p><strong>Tf_ini</strong> ([3] $\mathrm{{}^o}C$): array of the same length as for parameter q_in with water injection temperature(s).</p>
+<p><strong>Tf_ini</strong> ([3] <span class="arithmatex">\(\mathrm{{}^o}C\)</span>): array of the same length as for parameter q_in with water injection temperature(s).</p>
 </li>
 <li>
-<p><strong>Tr</strong> ([-0.032, 8.8] $\mathrm{{}^o}C/m$, $\mathrm{{}^o}C$): Rock temperature definition: first parameter is the vertical gradient, while the 2nd value is the rock temperature at the surface.</p>
+<p><strong>Tr</strong> ([-0.032, 8.8] <span class="arithmatex">\(\mathrm{{}^o}C/m\)</span>, <span class="arithmatex">\(\mathrm{{}^o}C\)</span>): Rock temperature definition: first parameter is the vertical gradient, while the 2nd value is the rock temperature at the surface.</p>
 </li>
 <li>
 <p><strong>v_pipe_length</strong> (50 m): y-length of each gallery segment (used for structured grids only)</p>
@@ -341,6 +341,7 @@
     <script>var base_url = "..";</script>
     <script src="../js/theme_extra.js"></script>
     <script src="../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       <script src="../search/main.js"></script>
     <script>
         jQuery(function () {
