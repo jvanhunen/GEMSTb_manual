@@ -63,7 +63,7 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">Running GEMSToolbox</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#creating-a-custom-input-file">Creating a custom input file</a>
+    <li class="toctree-l2"><a class="reference internal" href="#running-a-gemstoolbox-model">Running a GEMSToolbox model</a>
     </li>
     </ul>
                 </li>
@@ -104,25 +104,32 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="running-gemstoolbox-with-the-newly-created-digitised-map">Running GEMSToolbox with the newly created digitised map</h1>
-<h2 id="creating-a-custom-input-file">Creating a custom input file</h2>
+<h2 id="running-a-gemstoolbox-model">Running a GEMSToolbox model</h2>
 <ol>
 <li>
-<p>Using the MacOS Finder or Windows Explorer navigate to <code>&lt;homeGEMSTb&gt;/data</code> then make a copy of the <code>Grid_demo.xlsx</code> or any of the templates provided.</p>
+<p>Using the MacOS Finder or Windows Explorer, navigate to <code>&lt;homeGEMSTb&gt;/data</code>
+then make a copy of the <code>Grid_demo.xlsx</code> or any of the templates provided.</p>
 </li>
 <li>
-<p>Rename the copy to anything you want, but keep the Excel <code>.xlsx</code> extension. For now we will call this <code>CustomScenario.xlsx</code></p>
+<p>Rename the copy to anything you want, but keep the Excel <code>.xlsx</code> extension.
+For now we will call this <code>CustomScenario.xlsx</code></p>
 </li>
 <li>
-<p>Open your <code>CustomScenario</code> file in a spreadsheet editor. You can now customise any of the parameters as you wish using the information provided in the Glossary section. Note that if a parameter is not listed in the input file, the code will use its default value.</p>
+<p>Open your <code>CustomScenario</code> file in a spreadsheet editor. You can now
+customise any of the parameters as you wish using the information provided in
+the Glossary section. Note that if a parameter is not listed in the input file,
+the code will use its default value.</p>
 </li>
 <li>
-<p>On the command line, move to the <code>&lt;homeGEMSTb&gt;</code> folder, and run the following command to start the calculation:<br />
-<code>python GEMSTb.py data/CustomScenario.xlsx</code></p>
+<p>On the command line, move to the <code>&lt;homeGEMSTb&gt;</code> folder, and run the
+following command to start the calculation:  <code>python GEMSTb.py
+data/CustomScenario.xlsx</code></p>
 </li>
 <li>
-<p>If your input file contains multiple models (i.e. multiple columns), you can run the code in parallel:<br />
-<code>python GEMSTb.py data/CustomScenario.xlsx –num_workers N</code><br />
-    where <code>N</code> is the numbers of parallel threads you would like to use.</p>
+<p>If your input file contains multiple models (i.e. multiple columns), you can
+run the code in parallel:  <code>python GEMSTb.py data/CustomScenario.xlsx
+–num_workers N</code>  where <code>N</code> is the numbers of parallel threads you would like to
+use.</p>
 </li>
 </ol>
               
